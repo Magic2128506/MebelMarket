@@ -351,3 +351,4 @@ C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильн
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\MebelMarket.dll
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\MebelMarket.pdb
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\MebelMarket.genruntimeconfig.cache
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Furniture\Index.cshtml.g.cs
