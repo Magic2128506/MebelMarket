@@ -40,7 +40,7 @@
                     <div class="col-3">
                         <!-- Logo Header -->
                         <div class="header-logo">
-                            <a href="index.html"><img src="~/images/logo/logo.png" alt="Мебель маркет"></a>
+                            <a asp-controller="Home" asp-action="Index"><img src="~/images/logo/logo.png" alt="Мебель маркет"></a>
                         </div>
                     </div>
                     <div class="col-6">
@@ -67,11 +67,11 @@
                             <nav>
                                 <ul>
                                     <li class="has-dropdown">
-                                        <a class="active main-menu-link" href="index.html">Главная <i class="fa fa-angle-down"></i></a>
+                                        <a class="active main-menu-link" asp-controller="Home" asp-action="Index">Главная <i class="fa fa-angle-down"></i></a>
                                         <!-- Sub Menu -->
                                         <ul class="sub-menu">
-                                            <li><a href="index.html">Мебель для дома</a></li>
-                                            <li><a href="index.html">Офисная мебель</a></li>
+                                            <li><a asp-controller="Home" asp-action="Index">Мебель для дома</a></li>
+                                            <li><a asp-controller="Home" asp-action="Index">Офисная мебель</a></li>
                                         </ul>
                                     </li>
                                     <li class="has-dropdown has-megaitem">
@@ -209,7 +209,7 @@
                         <li>
                             <a href="#"><span>Home</span></a>
                             <ul class="mobile-sub-menu">
-                                <li><a href="index.html">Home 1</a></li>
+                                <li><a asp-controller="Home" asp-action="Index">Home 1</a></li>
                                 <li><a href="index-2.html">Home 2</a></li>
                             </ul>
                         </li>
@@ -323,7 +323,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-5">
                         <div class="footer-widget footer-widget-contact">
                             <div class="footer-logo">
-                                <a href="index.html"><img src="~/images/logo/logo.png" alt="" class="img-fluid"></a>
+                                <a asp-controller="Home" asp-action="Index"><img src="~/images/logo/logo.png" alt="" class="img-fluid"></a>
                             </div>
                             <div class="footer-contact">
                                 <div class="customer-support">

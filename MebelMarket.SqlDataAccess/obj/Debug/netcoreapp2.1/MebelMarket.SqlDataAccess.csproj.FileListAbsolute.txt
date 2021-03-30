@@ -1,0 +1,12 @@
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\bin\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.deps.json
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\bin\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.dll
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\bin\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.pdb
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\obj\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.AssemblyInfoInputs.cache
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\obj\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.AssemblyInfo.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\obj\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\obj\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.dll
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\obj\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.pdb
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\bin\Debug\netcoreapp2.1\MebelMarket.Domain.dll
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\bin\Debug\netcoreapp2.1\MebelMarket.Domain.pdb
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\obj\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.csprojAssemblyReference.cache
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.SqlDataAccess\obj\Debug\netcoreapp2.1\MebelMarket.SqlDataAccess.csproj.CopyComplete

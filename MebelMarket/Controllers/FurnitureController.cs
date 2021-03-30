@@ -12,5 +12,10 @@ namespace MebelMarket.Controllers
         {
             return View();
         }
+
+        public IActionResult Grid()
+        {
+            return View("Grid");
+        }
     }
 }

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MebelMarket", "MebelMarket\MebelMarket.csproj", "{25FD9822-372A-479F-A670-4A17ED6A7F7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MebelMarket", "MebelMarket\MebelMarket.csproj", "{25FD9822-372A-479F-A670-4A17ED6A7F7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MebelMarket.Domain", "MebelMarket.Domain\MebelMarket.Domain.csproj", "{B83D999E-F03C-4D83-93A2-132376DDCC36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MebelMarket.SqlDataAccess", "MebelMarket.SqlDataAccess\MebelMarket.SqlDataAccess.csproj", "{697BE8E3-31E1-4DEA-A588-74159E617CB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{25FD9822-372A-479F-A670-4A17ED6A7F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25FD9822-372A-479F-A670-4A17ED6A7F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25FD9822-372A-479F-A670-4A17ED6A7F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B83D999E-F03C-4D83-93A2-132376DDCC36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B83D999E-F03C-4D83-93A2-132376DDCC36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B83D999E-F03C-4D83-93A2-132376DDCC36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B83D999E-F03C-4D83-93A2-132376DDCC36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{697BE8E3-31E1-4DEA-A588-74159E617CB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{697BE8E3-31E1-4DEA-A588-74159E617CB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{697BE8E3-31E1-4DEA-A588-74159E617CB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{697BE8E3-31E1-4DEA-A588-74159E617CB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

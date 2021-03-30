@@ -1,0 +1,9 @@
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.Domain\bin\Debug\netcoreapp2.1\MebelMarket.Domain.deps.json
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.Domain\bin\Debug\netcoreapp2.1\MebelMarket.Domain.dll
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.Domain\bin\Debug\netcoreapp2.1\MebelMarket.Domain.pdb
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.Domain\obj\Debug\netcoreapp2.1\MebelMarket.Domain.csprojAssemblyReference.cache
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.Domain\obj\Debug\netcoreapp2.1\MebelMarket.Domain.AssemblyInfoInputs.cache
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.Domain\obj\Debug\netcoreapp2.1\MebelMarket.Domain.AssemblyInfo.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.Domain\obj\Debug\netcoreapp2.1\MebelMarket.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.Domain\obj\Debug\netcoreapp2.1\MebelMarket.Domain.dll
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket.Domain\obj\Debug\netcoreapp2.1\MebelMarket.Domain.pdb
