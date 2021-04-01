@@ -1,13 +1,8 @@
 ﻿using MebelMarket.Infrastructure.Interfaces;
-using MebelMarket.Infrastructure.Mapping;
 using MebelMarket.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MebelMarket.Controllers
 {
@@ -40,7 +35,8 @@ namespace MebelMarket.Controllers
 
         public IActionResult FindAny(string search)
         {
-            return RedirectToAction("Search", "Furniture", search);
+            string url = $"/Furniture/Search?Search={search}";
+            return Redirect(url);
         }
     }
 }

@@ -1,9 +1,7 @@
-﻿using MebelMarket.Domain;
-using MebelMarket.Infrastructure.Interfaces;
+﻿using MebelMarket.Infrastructure.Interfaces;
 using MebelMarket.Infrastructure.Mapping;
 using MebelMarket.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace MebelMarket.Controllers
 {
@@ -50,11 +48,9 @@ namespace MebelMarket.Controllers
             return View(furnitures.ToView());
         }
 
-        public IActionResult Search(string search)
+        public IActionResult Search([FromQuery(Name = "Search")] string search)
         {
-            var furnitures = _FurnitureData.FindAnyByName(search);
-
-            return View("Grid", furnitures.ToView());
+            return FindAny(search);
         }
 
         public IActionResult FindAny(string search)
