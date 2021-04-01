@@ -382,3 +382,4 @@ C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильн
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Partial\_Categories.cshtml.g.cs
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Partial\_FurnitureFromSlider.cshtml.g.cs
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Furniture\Create.cshtml.g.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Furniture\Edit.cshtml.g.cs

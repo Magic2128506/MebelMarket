@@ -2,6 +2,7 @@
 using MebelMarket.Infrastructure.Mapping;
 using MebelMarket.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace MebelMarket.Controllers
 {
@@ -83,7 +84,7 @@ namespace MebelMarket.Controllers
             _FurnitureData.Add(model);
             _FurnitureData.SaveChanges();
 
-            return View(model.ToView());
+            return Redirect($"Index/{model.Id}");
         }
 
         public IActionResult ViewForOffice()
@@ -98,6 +99,39 @@ namespace MebelMarket.Controllers
             var furnitures = _FurnitureData.GetForHomeFurnitures();
 
             return View("Grid", furnitures.ToView());
+        }
+
+        public IActionResult Edit(int? Id)
+        {
+            if (Id is null || Id < 0)
+                return View(new FurnitureViewModel());
+
+            var furniture = _FurnitureData.GetById((int)Id);
+
+            if (furniture is null)
+                return NotFound();
+
+            return View(furniture.ToView());
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult Edit(FurnitureViewModel furnitureViewModel)
+        {
+            if (furnitureViewModel is null)
+                throw new ArgumentNullException(nameof(furnitureViewModel));
+
+            if (!ModelState.IsValid)
+                return View(furnitureViewModel);
+
+            var id = furnitureViewModel.Id;
+            if (id == 0)
+                _FurnitureData.Add(furnitureViewModel.FromView());
+            else
+                _FurnitureData.Edit(id, furnitureViewModel.FromView());
+
+            _FurnitureData.SaveChanges();
+
+            return View(furnitureViewModel);
         }
     }
 }

@@ -21,6 +21,24 @@ namespace MebelMarket.Infrastructure.Services.InSQL
             _db.Add(furniture);
         }
 
+        public void Edit(int id, Furniture newModel)
+        {
+            if (newModel is null)
+                throw new ArgumentNullException(nameof(newModel));
+
+            var model = GetById(newModel.Id);
+
+            if (model is null)
+                return;
+
+            model.Name = newModel.Name;
+            model.Description = newModel.Description;
+            model.Price = newModel.Price;
+            model.IsNew = newModel.IsNew;
+            model.IsFeatured = newModel.IsFeatured;
+            model.ForOffice = newModel.ForOffice;
+        }
+
         public void SaveChanges() => _db.SaveChanges();
 
         public IEnumerable<FurnitureType> GetAllTypes()
