@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*-----------------------------------------------------------------------------------
 
     Template Name: Aments
@@ -14669,7 +14669,7 @@ Components - Sidebar Widget
   display: inline-block;
 }
 .filter-type-price input {
-  width: 100px;
+  width: 150px;
   display: inline-block;
   text-align: right;
 }
@@ -17030,7 +17030,6 @@ Layout - Header
   font-weight: 400;
   display: block;
   line-height: 35px;
-  text-transform: capitalize;
   color: #666;
   position: relative;
   transition: all 0.3s ease 0s;
@@ -17081,35 +17080,37 @@ Layout - Header
 }
 
 .mega-menu {
-  position: absolute;
-  min-width: 100%;
-  padding: 25px 30px 30px 30px;
-  background: #FFF;
-  box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.1);
-  transform: perspective(600px) rotateX(-90deg);
-  transform-origin: 0 0 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.5s;
-  z-index: 99;
-  top: 100%;
-  text-align: left;
+    position: absolute;
+    min-width: 100%;
+    padding: 25px 30px 30px 30px;
+    background: #FFF;
+    box-shadow: 0 3px 11px 0 rgba(0, 0, 0, 0.1);
+    transform: perspective(600px) rotateX(-90deg);
+    transform-origin: 0 0 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    z-index: 99;
+    top: 100%;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .mega-menu-inner {
   display: flex;
   justify-content: space-between;
+  margin: 10px 10px 10px 10px;
 }
 
 .mega-menu-item-title {
   font-size: 16px;
   line-height: 24px;
-  text-transform: uppercase;
   font-weight: 700;
   display: block;
   margin-bottom: 13px;
+  white-space: nowrap;
   color: #333;
 }
 .mega-menu-item-title:hover {

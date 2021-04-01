@@ -1,30 +1,10 @@
-﻿@{
+﻿@model FurnitureViewModel
+@{
     ViewData["Title"] = "Мебель";
 }
 
-<!-- ...:::: Start Breadcrumb Section:::... -->
-<div class="breadcrumb-section">
-    <div class="breadcrumb-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex justify-content-between justify-content-md-between  align-items-center flex-md-row flex-column">
-                    <h3 class="breadcrumb-title">Product Details Default</h3>
-                    <div class="breadcrumb-nav">
-                        <nav aria-label="breadcrumb">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
-                                <li class="active" aria-current="page">Product Details Default</li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- ...:::: End Breadcrumb Section:::... -->
 <!-- Start Product Details Section -->
-<div class="product-details-section">
+<div class="product-details-section" style="margin-top: 35px;">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -75,19 +55,18 @@
                 <div class="product-details-content-area">
                     <!-- Start  Product Details Text Area-->
                     <div class="product-details-text">
-                        <h4 class="title">Nonstick Dishwasher PFOA</h4>
+                        <h4 class="title">@Model.Name</h4>
                         <div class="d-flex align-items-center">
                             <div class="product-review">
                                 <span class="review-fill"><i class="fa fa-star"></i></span>
                                 <span class="review-fill"><i class="fa fa-star"></i></span>
                                 <span class="review-fill"><i class="fa fa-star"></i></span>
                                 <span class="review-fill"><i class="fa fa-star"></i></span>
-                                <span class="review-empty"><i class="fa fa-star"></i></span>
+                                <span class="review-fill"><i class="fa fa-star"></i></span>
                             </div>
-                            <a href="" class="customer-review">(customer review )</a>
                         </div>
-                        <div class="price"><del>$70.00</del>$80.00</div>
-                        <p>eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in</p>
+                        <div class="price">@Model.Price</div>
+                        <p>@Model.Description</p>
                     </div> <!-- End  Product Details Text Area-->
                     <!-- Start Product Variable Area -->
                     <div class="product-details-variable">
@@ -136,23 +115,6 @@
                             </div>
                         </div>
                     </div> <!-- End Product Variable Area -->
-                    <!-- Start  Product Details Meta Area-->
-                    <div class="product-details-meta mb-20">
-                        <ul>
-                            <li><a href=""><i class="icon-heart"></i>Add to wishlist</a></li>
-                            <li><a href=""><i class="icon-repeat"></i>Compare</a></li>
-                        </ul>
-                    </div> <!-- End  Product Details Meta Area-->
-                    <!-- Start  Product Details Social Area-->
-                    <div class="product-details-social">
-                        <ul>
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i>Like</a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i>Tweet</a></li>
-                            <li><a href="#" class="pinterest"><i class="fa fa-pinterest"></i>Save</a></li>
-                            <li><a href="#" class="google-plus"><i class="fa fa-google-plus"></i>Save</a></li>
-                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i>Linked</a></li>
-                        </ul>
-                    </div> <!-- End  Product Details Social Area-->
                 </div>
             </div>
         </div>

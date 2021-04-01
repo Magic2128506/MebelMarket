@@ -1,3 +1,5 @@
+using MebelMarket.Infrastructure.Interfaces;
+using MebelMarket.Infrastructure.Services.InSQL;
 using MebelMarket.SqlDataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -5,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.IO;
 
 namespace MebelMarket
 {
@@ -25,6 +26,8 @@ namespace MebelMarket
 
             services.AddDbContext<MebelMarketContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("MebelMarket")));
+
+            services.AddScoped<IFurnitureData, SQLFurnitureData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

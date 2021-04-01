@@ -1,0 +1,73 @@
+﻿@model FurnitureViewModel
+@using MebelMarket.Infrastructure.Interfaces
+@using MebelMarket.Infrastructure.Mapping
+
+@{
+    ViewData["Title"] = "Админка";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <input asp-for="Id" type="hidden" />
+                <br />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>
+                        <input asp-for="IsNew" class="checkbox">
+                        Новинка
+                    </span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>
+                        <input asp-for="IsFeatured" class="checkbox">
+                        Распродажа
+                    </span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <span>
+                        <input asp-for="ForOffice" class="checkbox">
+                        Офисная мебель
+                    </span>
+                </div>
+                <br />
+                <div class="form-group">
+                    @inject IFurnitureData catalog;
+                    <label asp-for="Type">Выберите тип:</label>
+                    <select asp-for="Type" asp-items="@new SelectList(catalog.GetAllTypes().Select(x => x.Name))"></select>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Создать" class="hero-button" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+

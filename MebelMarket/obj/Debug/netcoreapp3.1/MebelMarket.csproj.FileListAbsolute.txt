@@ -378,3 +378,7 @@ C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильн
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\bin\Debug\netcoreapp3.1\Models\ErrorViewModel.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Partial\_Categories.cshtml.g.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Partial\_FurnitureFromSlider.cshtml.g.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Furniture\Create.cshtml.g.cs

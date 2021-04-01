@@ -1,6 +1,7 @@
 ﻿using MebelMarket.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 
 namespace MebelMarket.SqlDataAccess
 {
@@ -8,52 +9,99 @@ namespace MebelMarket.SqlDataAccess
     {
         public MebelMarketContext(DbContextOptions<MebelMarketContext> Options) : base(Options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
 
         public DbSet<Furniture> Furnitures { get; set; }
         public DbSet<FurnitureType> FurnitureTypes { get; set; }
+        public DbSet<FurnitureCategory> FurnitureCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<FurnitureCategory>().HasData(
+                new FurnitureCategory[]
+                {
+                    new FurnitureCategory { Id = 1, Name="Мягкая мебель"},
+                    new FurnitureCategory { Id = 2, Name="Гостиная"},
+                    new FurnitureCategory { Id = 3, Name="Кухня"},
+                    new FurnitureCategory { Id = 4, Name="Спальня"},
+                    new FurnitureCategory { Id = 5, Name="Шкафы"},
+                    new FurnitureCategory { Id = 6, Name="Детская мебель"},
+                    new FurnitureCategory { Id = 7, Name="Прихожая"},
+                    new FurnitureCategory { Id = 8, Name="Офис"},
+                    new FurnitureCategory { Id = 9, Name="Сад и дача"},
+                });
+
             modelBuilder.Entity<FurnitureType>().HasData(
                 new FurnitureType[]
                 {
-                    new FurnitureType { Id = 1, Name="Диваны прямые", Category = "Мягкая мебель"},
-                    new FurnitureType { Id = 2, Name="Диваны угловые", Category = "Мягкая мебель"},
-                    new FurnitureType { Id = 3, Name="Диваны для офиса", Category = "Мягкая мебель"},
-                    new FurnitureType { Id = 4, Name="Диваны детские", Category = "Мягкая мебель"},
-                    new FurnitureType { Id = 5, Name="Кресла", Category = "Мягкая мебель"},
-                    new FurnitureType { Id = 6, Name="Кресла-качалки", Category = "Мягкая мебель"},
-                    new FurnitureType { Id = 7, Name="Кресла-мешки", Category = "Мягкая мебель"},
-                    new FurnitureType { Id = 8, Name="Пуфы", Category = "Мягкая мебель"},
-                    new FurnitureType { Id = 10, Name="Банкетки", Category = "Мягкая мебель"},
-                    new FurnitureType { Id = 11, Name="Стенки", Category = "Гостинная"},
-                    new FurnitureType { Id = 12, Name="Журнальные столики", Category = "Гостинная"},
-                    new FurnitureType { Id = 13, Name="Тумбы под ТВ", Category = "Гостинная"},
-                    new FurnitureType { Id = 14, Name="Кухонные гарнитуры", Category = "Кухня"},
-                    new FurnitureType { Id = 15, Name="Кухонные уголки", Category = "Кухня"},
-                    new FurnitureType { Id = 16, Name="Кухонные столы", Category = "Кухня"},
-                    new FurnitureType { Id = 17, Name="Кухонные стулья", Category = "Кухня"},
-                    new FurnitureType { Id = 18, Name="Барные стулья", Category = "Кухня"},
-                    new FurnitureType { Id = 19, Name="Табуреты", Category = "Кухня"},
-                    new FurnitureType { Id = 20, Name="Мойки", Category = "Кухня"},
-                    new FurnitureType { Id = 21, Name="Столешницы", Category = "Кухня"},
-                    new FurnitureType { Id = 22, Name="Стеновые панели", Category = "Кухня"},
-                    new FurnitureType { Id = 23, Name="Комплектующие", Category = "Кухня"}
+                    new FurnitureType { Id = 1, Name="Диваны прямые", CategoryId = 1},
+                    new FurnitureType { Id = 2, Name="Диваны угловые", CategoryId = 1},
+                    new FurnitureType { Id = 3, Name="Диваны для офиса", CategoryId = 1},
+                    new FurnitureType { Id = 4, Name="Диваны детские", CategoryId = 1},
+                    new FurnitureType { Id = 5, Name="Кресла", CategoryId = 1},
+                    new FurnitureType { Id = 6, Name="Кресла-качалки", CategoryId = 1},
+                    new FurnitureType { Id = 7, Name="Кресла-мешки", CategoryId = 1},
+                    new FurnitureType { Id = 8, Name="Пуфы", CategoryId = 1},
+                    new FurnitureType { Id = 9, Name="Банкетки", CategoryId = 1},
+                    new FurnitureType { Id = 10, Name="Стенки", CategoryId = 2},
+                    new FurnitureType { Id = 11, Name="Журнальные столики", CategoryId = 2},
+                    new FurnitureType { Id = 12, Name="Тумбы под ТВ", CategoryId = 2},
+                    new FurnitureType { Id = 13, Name="Кухонные гарнитуры", CategoryId = 3},
+                    new FurnitureType { Id = 14, Name="Кухонные уголки", CategoryId = 3},
+                    new FurnitureType { Id = 15, Name="Кухонные столы", CategoryId = 3},
+                    new FurnitureType { Id = 16, Name="Кухонные стулья", CategoryId = 3},
+                    new FurnitureType { Id = 17, Name="Барные стулья", CategoryId = 3},
+                    new FurnitureType { Id = 18, Name="Табуреты", CategoryId = 3},
+                    new FurnitureType { Id = 19, Name="Мойки", CategoryId = 3},
+                    new FurnitureType { Id = 20, Name="Столешницы", CategoryId = 3},
+                    new FurnitureType { Id = 21, Name="Стеновые панели", CategoryId = 3},
+                    new FurnitureType { Id = 22, Name="Комплектующие", CategoryId = 3},
+                    new FurnitureType { Id = 23, Name="Спальные гарнитуры", CategoryId = 4},
+                    new FurnitureType { Id = 24, Name="Кровати", CategoryId = 4 },
+                    new FurnitureType { Id = 25, Name="Кроватные основания", CategoryId = 4},
+                    new FurnitureType { Id = 26, Name="Матрасы", CategoryId = 4},
+                    new FurnitureType { Id = 27, Name="Банкетки и пуфы", CategoryId = 4},
+                    new FurnitureType { Id = 28, Name="Туалетные столики", CategoryId = 4},
+                    new FurnitureType { Id = 29, Name="Комоды", CategoryId = 4},
+                    new FurnitureType { Id = 30, Name="Тумбы", CategoryId = 4},
+                    new FurnitureType { Id = 31, Name="Зеркала", CategoryId = 4},
+                    new FurnitureType { Id = 32, Name="Шкафы купе", CategoryId = 5},
+                    new FurnitureType { Id = 33, Name="Шкафы распашные", CategoryId = 5},
+                    new FurnitureType { Id = 34, Name="Стеллажи", CategoryId = 5},
+                    new FurnitureType { Id = 35, Name="Детские кровати", CategoryId = 6},
+                    new FurnitureType { Id = 36, Name="Стулья для детской", CategoryId = 6},
+                    new FurnitureType { Id = 37, Name="Детские комплексы", CategoryId = 6},
+                    new FurnitureType { Id = 38, Name="Тумбы для обуви", CategoryId = 7},
+                    new FurnitureType { Id = 39, Name="Вешалки", CategoryId = 7},
+                    new FurnitureType { Id = 40, Name="Пуфы", CategoryId = 7},
+                    new FurnitureType { Id = 41, Name="Скамьи", CategoryId = 7},
+                    new FurnitureType { Id = 42, Name="Прихожие", CategoryId = 7},
+                    new FurnitureType { Id = 43, Name="Компьютерные столы", CategoryId = 8},
+                    new FurnitureType { Id = 44, Name="Офисные кресла", CategoryId = 8},
+                    new FurnitureType { Id = 45, Name="Письменные столы", CategoryId = 8},
+                    new FurnitureType { Id = 46, Name="Полки", CategoryId = 8},
+                    new FurnitureType { Id = 47, Name="Офисные тумбы", CategoryId = 8},
+                    new FurnitureType { Id = 48, Name="Офисные стулья", CategoryId = 8},
+                    new FurnitureType { Id = 49, Name="Раскладушки", CategoryId = 9},
+                    new FurnitureType { Id = 50, Name="Шезлонги и лежаки", CategoryId = 9},
+                    new FurnitureType { Id = 51, Name="Садовые скамейки", CategoryId = 9},
+                    new FurnitureType { Id = 52, Name="Этажерки", CategoryId = 9},
+                    new FurnitureType { Id = 53, Name="Мебель из ротанга", CategoryId = 9},
+                    new FurnitureType { Id = 54, Name="Прочая мебель", CategoryId = 9}
                 });
 
             modelBuilder.Entity<Furniture>().HasData(
                 new Furniture[]
                 {
-                    new Furniture { Id = 1, Name="Диван", Price = 111},
-                    new Furniture { Id = 2, Name="Табуреты", Price = 222},
-                    new Furniture { Id = 3, Name="Мойки", Price = 333},
-                    new Furniture { Id = 4, Name="Столешницы", Price = 444},
-                    new Furniture { Id = 5, Name="Кресла", Price = 555},
-                    new Furniture { Id = 6, Name="Кресла-качалки", Price = 666},
-                    new Furniture { Id = 7, Name="Пуфы", Price = 777},
+                    new Furniture { Id = 1, Name="Диван", Price = 111, TypeId = 1},
+                    new Furniture { Id = 2, Name="Табуреты", Price = 222, TypeId = 1},
+                    new Furniture { Id = 3, Name="Мойки", Price = 333, TypeId = 1},
+                    new Furniture { Id = 4, Name="Столешницы", Price = 444, TypeId = 1},
+                    new Furniture { Id = 5, Name="Кресла", Price = 555, TypeId = 1},
+                    new Furniture { Id = 6, Name="Кресла-качалки", Price = 666, TypeId = 1},
+                    new Furniture { Id = 7, Name="Пуфы", Price = 777, TypeId = 1},
                 });
         }
     }

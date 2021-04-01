@@ -1,0 +1,105 @@
+﻿@model IEnumerable<FurnitureTypeViewModel>
+
+<li class="has-dropdown has-megaitem">
+    <a asp-controller="Furniture" asp-action="Grid" asp-route-id="0">Каталог товаров <i class="fa fa-angle-down"></i></a>
+    <!-- Mega Menu -->
+    <div class="mega-menu">
+        <ul class="mega-menu-inner">
+
+            <li class="mega-menu-item">
+                <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="1" class="mega-menu-item-title">Мягкая мебель</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var product in Model.Where(x => x.Category == 1))
+                    {
+                        <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                    }
+                </ul>
+            </li>
+
+            <li class="mega-menu-item">
+                <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="2" class="mega-menu-item-title">Гостинная</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var product in Model.Where(x => x.Category == 2))
+                    {
+                        <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                    }
+                </ul>
+            </li>
+
+            <li class="mega-menu-item">
+                <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="3" class="mega-menu-item-title">Кухня</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var product in Model.Where(x => x.Category == 3))
+                    {
+                        <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                    }
+                </ul>
+            </li>
+
+            <li class="mega-menu-item">
+                <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="4" class="mega-menu-item-title">Спальня</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var product in Model.Where(x => x.Category == 4))
+                    {
+                        <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                    }
+                </ul>
+            </li>
+
+            <li class="mega-menu-item">
+                <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="5" class="mega-menu-item-title">Шкафы</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var product in Model.Where(x => x.Category == 5))
+                    {
+                        <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                    }
+                </ul>
+            </li>
+
+            <li class="mega-menu-item">
+                <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="6" class="mega-menu-item-title">Детская мебель</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var product in Model.Where(x => x.Category == 6))
+                    {
+                        <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                    }
+                </ul>
+            </li>
+
+            <li class="mega-menu-item">
+                <a asp-controller="Furniture" asp-action="Grid" asp-route-id="7" class="mega-menu-item-title">Прихожая</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var product in Model.Where(x => x.Category == 7))
+                    {
+                        <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                    }
+                </ul>
+            </li>
+
+            <li class="mega-menu-item">
+                <a asp-controller="Furniture" asp-action="Grid" asp-route-id="8" class="mega-menu-item-title">Офис</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var product in Model.Where(x => x.Category == 8))
+                    {
+                        <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                    }
+                </ul>
+            </li>
+
+            <li class="mega-menu-item">
+                <a asp-controller="Furniture" asp-action="Grid" asp-route-id="9" class="mega-menu-item-title">Сад и дача</a>
+                <ul class="mega-menu-sub">
+                    @foreach (var product in Model.Where(x => x.Category == 9))
+                    {
+                        <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                    }
+                </ul>
+            </li>
+        </ul>
+        <div class="menu-banner">
+            <a href="" class="menu-banner-link">
+                <img class="menu-banner-img opacity-50" src="~/images/banner/menu-banner.jpg" alt="">
+            </a>
+        </div>
+    </div>
+</li>

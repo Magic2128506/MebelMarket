@@ -18,4 +18,10 @@
     <ProjectReference Include="..\MebelMarket.SqlDataAccess\MebelMarket.SqlDataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Models\ErrorViewModel.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>
