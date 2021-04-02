@@ -99,5 +99,8 @@ namespace MebelMarket.Infrastructure.Services.InSQL
             => _db.Furnitures
             .Where(x => !x.ForOffice)
             .OrderByDescending(x => x.Id);
+
+        public IEnumerable<FurnitureCategory> GetAllCategories()
+            => _db.FurnitureCategories.ToList();
     }
 }

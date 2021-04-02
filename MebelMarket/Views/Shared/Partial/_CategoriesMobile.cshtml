@@ -1,114 +1,23 @@
 ﻿@model IEnumerable<FurnitureTypeViewModel>
+@using MebelMarket.Infrastructure.Interfaces
+@inject IFurnitureData catalog;
 
 <li>
     <a href="#"><span>Категории</span></a>
-
-    <ul class="mobile-sub-menu">
-        <li>
-            <a href="#">Мягкая мебель</a>
+    @{
+        for (int i = 1; i < @catalog.GetAllCategories().Count() + 1; i++)
+        {
             <ul class="mobile-sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == 1))
-                {
-                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                }
+                <li>
+                    <a href="#">@catalog.GetAllCategories().FirstOrDefault(x => x.Id == i).Name</a>
+                    <ul class="mobile-sub-menu">
+                        @foreach (var product in Model.Where(x => x.Category == i))
+                        {
+                            <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
+                        }
+                    </ul>
+                </li>
             </ul>
-        </li>
-    </ul>
-
-    <ul class="mobile-sub-menu">
-        <li>
-            <a href="#">Гостинная</a>
-            <ul class="mobile-sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == 2))
-                {
-                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                }
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="mobile-sub-menu">
-        <li>
-            <a href="#">Кухня</a>
-            <ul class="mobile-sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == 3))
-                {
-                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                }
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="mobile-sub-menu">
-        <li>
-            <a href="#">Спальня</a>
-            <ul class="mobile-sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == 4))
-                {
-                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                }
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="mobile-sub-menu">
-        <li>
-            <a href="#">Шкафы</a>
-            <ul class="mobile-sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == 5))
-                {
-                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                }
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="mobile-sub-menu">
-        <li>
-            <a href="#">Детская мебель</a>
-            <ul class="mobile-sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == 6))
-                {
-                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                }
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="mobile-sub-menu">
-        <li>
-            <a href="#">Прихожая</a>
-            <ul class="mobile-sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == 7))
-                {
-                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                }
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="mobile-sub-menu">
-        <li>
-            <a href="#">Офис</a>
-            <ul class="mobile-sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == 8))
-                {
-                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                }
-            </ul>
-        </li>
-    </ul>
-
-    <ul class="mobile-sub-menu">
-        <li>
-            <a href="#">Сад и дача</a>
-            <ul class="mobile-sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == 9))
-                {
-                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                }
-            </ul>
-        </li>
-    </ul>
-
+        }
+    }
 </li>

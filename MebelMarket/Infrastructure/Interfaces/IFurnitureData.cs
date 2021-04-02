@@ -19,5 +19,6 @@ namespace MebelMarket.Infrastructure.Interfaces
         IEnumerable<Furniture> GetLastFurnitures();
         IEnumerable<Furniture> GetForOfficeFurnitures();
         IEnumerable<Furniture> GetForHomeFurnitures();
+        public IEnumerable<FurnitureCategory> GetAllCategories();
     }
 }
