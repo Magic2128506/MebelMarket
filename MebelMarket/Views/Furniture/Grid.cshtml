@@ -8,152 +8,7 @@
 <div class="shop-section">
     <div class="container">
         <div class="row flex-column-reverse flex-lg-row">
-            <div class="col-lg-3">
-                <!-- Start Sidebar Area -->
-                <div class="siderbar-section">
-
-                    <!-- Start Single Sidebar Widget -->
-                    <div class="sidebar-single-widget">
-                        <h6 class="sidebar-title">Фильтр по цене</h6>
-                        <div class="sidebar-content">
-                            <div id="slider-range"></div>
-                            <div class="filter-type-price">
-                                <label for="amount">Ценовой диапозон</label>
-                                <input type="text" id="amount">
-                            </div>
-                        </div>
-                    </div> <!-- End Single Sidebar Widget -->
-                    <!-- Start Single Sidebar Widget -->
-                    <div class="sidebar-single-widget">
-                        <h6 class="sidebar-title">CATEGORIES</h6>
-                        <div class="sidebar-content">
-                            <div class="filter-type-select">
-                                <ul>
-                                    <li>
-                                        <label class="checkbox-default" for="catagory_1">
-                                            <input type="checkbox" id="catagory_1">
-                                            <span>Catagory (1)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="catagory_2">
-                                            <input type="checkbox" id="catagory_2">
-                                            <span>Catagory (2)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="catagory_3">
-                                            <input type="checkbox" id="catagory_3">
-                                            <span>Catagory (3)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="catagory_4">
-                                            <input type="checkbox" id="catagory_4">
-                                            <span>Catagory (4)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="catagory_5">
-                                            <input type="checkbox" id="catagory_5">
-                                            <span>Catagory (5)</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> <!-- End Single Sidebar Widget -->
-                    <!-- Start Single Sidebar Widget -->
-                    <div class="sidebar-single-widget">
-                        <h6 class="sidebar-title">MANUFACTURER</h6>
-                        <div class="sidebar-content">
-                            <div class="filter-type-select">
-                                <ul>
-                                    <li>
-                                        <label class="checkbox-default" for="brakeParts">
-                                            <input type="checkbox" id="brakeParts">
-                                            <span>Brake Parts(6)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="accessories">
-                                            <input type="checkbox" id="accessories">
-                                            <span>Accessories (10)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="EngineParts">
-                                            <input type="checkbox" id="EngineParts">
-                                            <span>Engine Parts (4)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="hermes">
-                                            <input type="checkbox" id="hermes">
-                                            <span>hermes (10)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="tommyHilfiger">
-                                            <input type="checkbox" id="tommyHilfiger">
-                                            <span>Tommy Hilfiger(7)</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> <!-- End Single Sidebar Widget -->
-                    <!-- Start Single Sidebar Widget -->
-                    <div class="sidebar-single-widget">
-                        <h6 class="sidebar-title">SELECT BY COLOR</h6>
-                        <div class="sidebar-content">
-                            <div class="filter-type-select">
-                                <ul>
-                                    <li>
-                                        <label class="checkbox-default" for="black">
-                                            <input type="checkbox" id="black">
-                                            <span>Black (6)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="blue">
-                                            <input type="checkbox" id="blue">
-                                            <span>Blue (8)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="brown">
-                                            <input type="checkbox" id="brown">
-                                            <span>Brown (10)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="Green">
-                                            <input type="checkbox" id="Green">
-                                            <span>Green (6)</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-default" for="pink">
-                                            <input type="checkbox" id="pink">
-                                            <span>Pink (4)</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> <!-- End Single Sidebar Widget -->
-                    <!-- Start Single Sidebar Widget -->
-                    <div class="sidebar-single-widget">
-                        <div class="sidebar-content">
-                            <a href="product-details-default.html" class="sidebar-banner">
-                                <img class="img-fluid" src="~/images/banner_images/aments_banner_04.jpg" alt="">
-                            </a>
-                        </div>
-                    </div> <!-- End Single Sidebar Widget -->
-
-                </div> <!-- End Sidebar Area -->
-            </div>
+            <partial name="Partial/_SideBar" model="@Model" />
             <div class="col-lg-9">
                 <!-- Start Shop Product Sorting Section -->
                 <div class="shop-sort-section">
@@ -173,90 +28,19 @@
                                     <form action="#">
                                         <fieldset>
                                             <select name="speed" id="speed">
-                                                <option>Sort by average rating</option>
-                                                <option>Sort by popularity</option>
-                                                <option selected="selected">Sort by newness</option>
-                                                <option>Sort by price: low to high</option>
-                                                <option>Sort by price: high to low</option>
-                                                <option>Product Name: Z</option>
+                                                <option selected="selected">Сначала новые</option>
+                                                <option>Сначала дорогие</option>
+                                                <option>Сначала дешевые</option>
                                             </select>
                                         </fieldset>
                                     </form>
                                 </div> <!-- End Sort Select Option -->
-                                <!-- Start Page Amount -->
-                                <div class="page-amount">
-                                    <span>Showing 1–@Model.Count() of @Model.Count() results</span>
-                                </div> <!-- End Page Amount -->
-
                             </div> <!-- Start Sort Wrapper Box -->
                         </div>
                     </div>
                 </div> <!-- End Section Content -->
-                <!-- Start Tab Wrapper -->
-                <div class="sort-product-tab-wrapper">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="tab-content tab-animate-zoom">
-                                    <!-- Start Grid View Product -->
-                                    <div class="tab-pane active show sort-layout-single" id="layout-3-grid">
-                                        <div class="row">
 
-                                            @foreach (var product in Model)
-                                            {
-                                                <div class="col-xl-4 col-sm-6 col-12">
-                                                    <div class="product-default-single border-around">
-                                                        <div class="product-img-warp">
-                                                            <a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id" class="product-default-img-link">
-                                                                <img src="~/images/products_images/aments_products_image_1.jpg" alt="" class="product-default-img img-fluid">
-                                                            </a>
-                                                            <div class="product-action-icon-link">
-                                                                <ul>
-                                                                    <li><a href="#" data-toggle="modal" data-target="#modalAddcart"><i class="icon-shopping-cart"></i></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="product-default-content">
-                                                            <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id">@product.Name</a></h6>
-                                                            <span class="product-default-price">@product.Price</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-
-                                        </div>
-                                    </div> <!-- End Grid View Product -->
-                                    <!-- Start List View Product -->
-                                    <div class="tab-pane sort-layout-single" id="layout-list">
-                                        <div class="row">
-                                            @foreach (var product in Model)
-                                            {
-                                                <div class="col-12">
-                                                    <!-- Start Product Defautlt Single -->
-                                                    <div class="product-list-single border-around">
-                                                        <a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id" class="product-list-img-link">
-                                                            <img src="~/images/products_images/aments_products_image_5.jpg" alt="" class="img-fluid">
-                                                        </a>
-                                                        <div class="product-list-content">
-                                                            <h5 class="product-list-link"><a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id">@product.Name</a></h5>
-                                                            <span class="product-list-price"><del class="product-list-price-off">$30.12</del> @product.Price</span>
-                                                            <p>@product.Description</p>
-                                                            <div class="product-action-icon-link-list">
-                                                                <ul>
-                                                                    <li><a href="#" data-toggle="modal" data-target="#modalAddcart"><i class="icon-shopping-cart"></i></a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div> <!-- End Product Defautlt Single -->
-                                                </div>
-                                            }
-                                        </div>
-                                    </div> <!-- End List View Product -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- End Tab Wrapper -->
+                <partial name="Partial/_FurnituriesGrid" model="@Model" />
 
                 @if (Model.Count() > 20)
                 {
@@ -276,46 +60,5 @@
         </div>
     </div>
 </div> <!-- ...:::: End Shop Section:::... -->
-<!-- Start Modal Add cart -->
-<div class="modal fade" id="modalAddcart" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"> <i class="fa fa-times"></i></span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-7">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="modal-add-cart-product-img">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_1.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="modal-add-cart-info"><i class="fa fa-check-square"></i>Added to cart successfully!</div>
-                                    <div class="modal-add-cart-product-cart-buttons">
-                                        <a href="cart.html">View Cart</a>
-                                        <a href="checkout.html">Checkout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-5 modal-border">
-                            <ul class="modal-add-cart-product-shipping-info">
-                                <li> <strong><i class="icon-shopping-cart"></i> There Are 5 Items In Your Cart.</strong></li>
-                                <li> <strong>TOTAL PRICE: </strong> <span>$187.00</span></li>
-                                <li class="modal-continue-button"><a href="#" data-dismiss="modal">CONTINUE SHOPPING</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End Modal Add cart -->
+
+<partial name="Partial/_modalAddCary" model="@Model" />

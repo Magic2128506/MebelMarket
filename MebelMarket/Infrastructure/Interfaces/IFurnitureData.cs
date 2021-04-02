@@ -11,13 +11,12 @@ namespace MebelMarket.Infrastructure.Interfaces
         Furniture GetById(int id);
         IEnumerable<Furniture> FindAnyByName(string name);
         IEnumerable<Furniture> GetByCategory(int id);
+        IEnumerable<Furniture> GetByType(int id);
         IEnumerable<FurnitureType> GetAllTypes();
         FurnitureType FindByName(string name);
         IEnumerable<Furniture> GetNewList();
         IEnumerable<Furniture> GetFeaturedList();
-        IEnumerable<Furniture> GetList(int categoryId);
         IEnumerable<Furniture> GetLastFurnitures();
-        IEnumerable<string> GetFurnitureTypeNames();
         IEnumerable<Furniture> GetForOfficeFurnitures();
         IEnumerable<Furniture> GetForHomeFurnitures();
     }

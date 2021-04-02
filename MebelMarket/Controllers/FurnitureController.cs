@@ -3,6 +3,7 @@ using MebelMarket.Infrastructure.Mapping;
 using MebelMarket.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 
 namespace MebelMarket.Controllers
 {
@@ -18,7 +19,7 @@ namespace MebelMarket.Controllers
         public IActionResult Index(int? id)
         {
             if (id == null)
-                return View("Grid");
+                return View(nameof(Grid));
 
             if (id < 0)
                 return BadRequest();
@@ -44,7 +45,7 @@ namespace MebelMarket.Controllers
                 return View(LastFurnitures.ToView());
             }
 
-            var furnitures = _FurnitureData.GetByCategory(id.Value);
+            var furnitures = _FurnitureData.GetByType(id.Value);
 
             return View(furnitures.ToView());
         }
@@ -58,16 +59,34 @@ namespace MebelMarket.Controllers
         {
             var furnitures = _FurnitureData.FindAnyByName(search);
 
-            return View("Grid", furnitures.ToView());
+            return View(nameof(Grid), furnitures.ToView());
         }
         public IActionResult GridByCategory(int id)
         {
             var furnitures = _FurnitureData.GetByCategory(id);
 
             if (furnitures is null)
-                return View("Grid");
+                return View(nameof(Grid));
 
-            return View("Grid", furnitures.ToView());
+            decimal helper = (decimal)furnitures.Count() / (decimal)21;
+            var page = Math.Ceiling(helper);
+
+            string url = $"/Furniture/ViewPageByCategory?page=1&categoryId={id}";
+
+            return Redirect(url);
+        }
+
+        public IActionResult ViewPageByCategory([FromQuery(Name = "page")] string id, [FromQuery(Name = "categoryId")] string catId)
+        {
+            int pageId = int.Parse(id);
+            int categoryId = int.Parse(catId);
+            var furnitures = _FurnitureData.GetByCategory(categoryId);
+            int start = 21 * (pageId - 1);
+            int lastCount = furnitures.Count() - start;
+            int count = lastCount < 21 ? lastCount : 21;
+            var returnList = furnitures.ToList().GetRange(start, count);
+
+            return View($"Grid", returnList.ToView());
         }
 
         public IActionResult Create() => View(new FurnitureViewModel());
@@ -91,14 +110,14 @@ namespace MebelMarket.Controllers
         {
             var furnitures = _FurnitureData.GetForOfficeFurnitures();
 
-            return View("Grid", furnitures.ToView());
+            return View(nameof(Grid), furnitures.ToView());
         }
 
         public IActionResult ViewForHome()
         {
             var furnitures = _FurnitureData.GetForHomeFurnitures();
 
-            return View("Grid", furnitures.ToView());
+            return View(nameof(Grid), furnitures.ToView());
         }
 
         public IActionResult Edit(int? Id)
@@ -115,7 +134,7 @@ namespace MebelMarket.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Edit(FurnitureViewModel furnitureViewModel)
+        public IActionResult Edit(FurnitureViewModel furnitureViewModel, string type)
         {
             if (furnitureViewModel is null)
                 throw new ArgumentNullException(nameof(furnitureViewModel));
@@ -123,11 +142,26 @@ namespace MebelMarket.Controllers
             if (!ModelState.IsValid)
                 return View(furnitureViewModel);
 
+            var model = furnitureViewModel.FromView();
+
+
+
             var id = furnitureViewModel.Id;
             if (id == 0)
-                _FurnitureData.Add(furnitureViewModel.FromView());
+                _FurnitureData.Add(model);
             else
-                _FurnitureData.Edit(id, furnitureViewModel.FromView());
+            {
+                if (type != null)
+                {
+                    var typeId = _FurnitureData.FindByName(type).Id;
+                    var modelFromDB = _FurnitureData.GetById(id);
+
+                    if (model.TypeId != modelFromDB.TypeId)
+                        model.TypeId = typeId;
+                }
+
+                _FurnitureData.Edit(id, model);
+            }
 
             _FurnitureData.SaveChanges();
 

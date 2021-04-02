@@ -37,6 +37,11 @@ namespace MebelMarket.Infrastructure.Services.InSQL
             model.IsNew = newModel.IsNew;
             model.IsFeatured = newModel.IsFeatured;
             model.ForOffice = newModel.ForOffice;
+
+            if (newModel.TypeId != null)
+            {
+                model.TypeId = newModel.TypeId;
+            }
         }
 
         public void SaveChanges() => _db.SaveChanges();
@@ -51,8 +56,12 @@ namespace MebelMarket.Infrastructure.Services.InSQL
         public IEnumerable<Furniture> GetByCategory(int id)
             => _db.Furnitures
             .Where(x => x.Type.CategoryId == id)
-            .OrderByDescending(x => x.Id)
-            .Take(21);
+            .OrderByDescending(x => x.Id);
+
+        public IEnumerable<Furniture> GetByType(int id)
+            => _db.Furnitures
+            .Where(x => x.TypeId == id)
+            .OrderByDescending(x => x.Id);
 
         public Furniture GetById(int id)
             => _db.Furnitures.FirstOrDefault(x => x.Id == id);
@@ -63,18 +72,6 @@ namespace MebelMarket.Infrastructure.Services.InSQL
             .OrderByDescending(x => x.Id)
             .Take(7);
 
-        public IEnumerable<Furniture> GetList(int categoryId)
-            => _db.Furnitures
-            .Where(x => x.Type.Category.Id == categoryId)
-            .OrderByDescending(x => x.Id)
-            .Take(21);
-
-        public IEnumerable<string> GetFurnitureTypeNames()
-            => _db.FurnitureTypes
-            .Where(x => x.Name != null)
-            .Select(x => x.Name)
-            .ToList();
-
         public IEnumerable<Furniture> GetLastFurnitures()
             => _db.Furnitures
             .OrderByDescending(x => x.Id)
@@ -83,14 +80,7 @@ namespace MebelMarket.Infrastructure.Services.InSQL
         public IEnumerable<Furniture> GetNewList()
             => _db.Furnitures
             .Where(x => x.IsNew)
-            .OrderByDescending(x => x.Id)
-            .Take(7);
-
-        public IEnumerable<Furniture> GetNewByCategoryList(int categoryId)
-            => _db.Furnitures
-            .Where(x => x.IsNew && x.Type.Category.Id == categoryId)
-            .OrderByDescending(x => x.Id)
-            .Take(7);
+            .OrderByDescending(x => x.Id);
 
         public FurnitureType FindByName(string name)
             => _db.FurnitureTypes.FirstOrDefault(x => x.Name == name);
@@ -98,19 +88,16 @@ namespace MebelMarket.Infrastructure.Services.InSQL
         public IEnumerable<Furniture> FindAnyByName(string name)
             => _db.Furnitures
             .Where(x => x.Name.Contains(name))
-            .OrderByDescending(x => x.Id)
-            .Take(21);
+            .OrderByDescending(x => x.Id);
 
         public IEnumerable<Furniture> GetForOfficeFurnitures()
             => _db.Furnitures
             .Where(x => x.ForOffice)
-            .OrderByDescending(x => x.Id)
-            .Take(21);
+            .OrderByDescending(x => x.Id);
 
         public IEnumerable<Furniture> GetForHomeFurnitures()
             => _db.Furnitures
             .Where(x => !x.ForOffice)
-            .OrderByDescending(x => x.Id)
-            .Take(21);
+            .OrderByDescending(x => x.Id);
     }
 }
