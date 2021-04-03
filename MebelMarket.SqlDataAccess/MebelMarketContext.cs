@@ -91,18 +91,6 @@ namespace MebelMarket.SqlDataAccess
                     new FurnitureType { Id = 53, Name="Мебель из ротанга", CategoryId = 9},
                     new FurnitureType { Id = 54, Name="Прочая мебель", CategoryId = 9}
                 });
-
-            modelBuilder.Entity<Furniture>().HasData(
-                new Furniture[]
-                {
-                    new Furniture { Id = 1, Name="Диван", Price = 111, TypeId = 1},
-                    new Furniture { Id = 2, Name="Табуреты", Price = 222, TypeId = 1},
-                    new Furniture { Id = 3, Name="Мойки", Price = 333, TypeId = 1},
-                    new Furniture { Id = 4, Name="Столешницы", Price = 444, TypeId = 1},
-                    new Furniture { Id = 5, Name="Кресла", Price = 555, TypeId = 1},
-                    new Furniture { Id = 6, Name="Кресла-качалки", Price = 666, TypeId = 1},
-                    new Furniture { Id = 7, Name="Пуфы", Price = 777, TypeId = 1},
-                });
         }
     }
 }
