@@ -8,6 +8,7 @@ namespace MebelMarket.Infrastructure.Interfaces
         public void SaveChanges() { }
         public void Add(Furniture newFurniture) { }
         public void Edit(int id, Furniture newModel) { }
+        public void Delete(int id) { }
         Furniture GetById(int id);
         IEnumerable<Furniture> FindAnyByName(string name);
         IEnumerable<Furniture> GetByCategory(int id);

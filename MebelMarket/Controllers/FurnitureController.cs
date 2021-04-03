@@ -167,5 +167,27 @@ namespace MebelMarket.Controllers
 
             return View(furnitureViewModel);
         }
+
+        public IActionResult DeleteItem(int? Id)
+        {
+            if (Id is null || Id < 0)
+                return View(new FurnitureViewModel());
+
+            var furniture = _FurnitureData.GetById((int)Id);
+
+            if (furniture is null)
+                return NotFound();
+
+            return View(furniture.ToView());
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            _FurnitureData.Delete(id);
+            _FurnitureData.SaveChanges();
+
+            return View(nameof(Grid));
+        }
     }
 }

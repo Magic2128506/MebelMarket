@@ -44,6 +44,13 @@ namespace MebelMarket.Infrastructure.Services.InSQL
             }
         }
 
+        public void Delete(int id)
+        {
+            var model = GetById(id);
+
+            _db.Remove(model);
+        }
+
         public void SaveChanges() => _db.SaveChanges();
 
         public IEnumerable<FurnitureType> GetAllTypes()
