@@ -1,19 +1,23 @@
 ﻿using MebelMarket.Infrastructure.Interfaces;
 using MebelMarket.Infrastructure.Mapping;
+using Microsoft.AspNetCore.Http;
 using MebelMarket.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MebelMarket.Controllers
 {
     public class FurnitureController : Controller
     {
         private readonly IFurnitureData _FurnitureData;
+        private readonly IWebHostEnvironment _environment;
 
-        public FurnitureController(IFurnitureData FurnitureData)
+        public FurnitureController(IFurnitureData FurnitureData, IWebHostEnvironment environment)
         {
             _FurnitureData = FurnitureData;
+            _environment = environment;
         }
 
         public IActionResult Index(int? id)
@@ -32,6 +36,9 @@ namespace MebelMarket.Controllers
             }
 
             var furniture = _FurnitureData.GetById(id.Value);
+
+            var wwwroot = _environment.WebRootPath;
+            ViewBag.wwwroot = wwwroot;
 
             return View(furniture.ToView());
         }

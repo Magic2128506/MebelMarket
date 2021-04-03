@@ -1,4 +1,5 @@
 ﻿@model FurnitureViewModel
+@using System.IO
 @{
     ViewData["Title"] = "Мебель";
 }
@@ -10,44 +11,41 @@
             <div class="col-md-6">
                 <div class="product-details-gallery-area">
                     <div class="product-large-image product-large-image-horaizontal">
-                        <div class="product-image-large-single zoom-image-hover">
-                            <img src="~/images/products_images/aments_products_large_image_1.jpg" alt="">
-                        </div>
-                        <div class="product-image-large-single zoom-image-hover">
-                            <img src="~/images/products_images/aments_products_large_image_2.jpg" alt="">
-                        </div>
-                        <div class="product-image-large-single zoom-image-hover">
-                            <img src="~/images/products_images/aments_products_large_image_3.jpg" alt="">
-                        </div>
-                        <div class="product-image-large-single zoom-image-hover">
-                            <img src="~/images/products_images/aments_products_large_image_4.jpg" alt="">
-                        </div>
-                        <div class="product-image-large-single zoom-image-hover">
-                            <img src="~/images/products_images/aments_products_large_image_5.jpg" alt="">
-                        </div>
-                        <div class="product-image-large-single zoom-image-hover">
-                            <img src="~/images/products_images/aments_products_large_image_6.jpg" alt="">
-                        </div>
+
+                        @{
+                            for (int i = 1; i < 9; i++)
+                            {
+                                var url = $"{ViewBag.wwwroot}/images/products_images/{Model.Id}L{i}.jpg";
+
+                                if (File.Exists(url))
+                                {
+                                    url = $"/images/products_images/{Model.Id}l{i}.jpg";
+                                    <div class="product-image-large-single zoom-image-hover">
+                                        <img src="@url" alt="">
+                                    </div>
+                                }
+                            }
+                        }
+
                     </div>
                     <div class="product-image-thumb product-image-thumb-horizontal pos-relative">
-                        <div class="zoom-active product-image-thumb-single">
-                            <img class="img-fluid" src="~/images/products_images/aments_products_image_1.jpg" alt="">
-                        </div>
-                        <div class="product-image-thumb-single">
-                            <img class="img-fluid" src="~/images/products_images/aments_products_image_2.jpg" alt="">
-                        </div>
-                        <div class="product-image-thumb-single">
-                            <img class="img-fluid" src="~/images/products_images/aments_products_image_3.jpg" alt="">
-                        </div>
-                        <div class="product-image-thumb-single">
-                            <img class="img-fluid" src="~/images/products_images/aments_products_image_4.jpg" alt="">
-                        </div>
-                        <div class="product-image-thumb-single">
-                            <img class="img-fluid" src="~/images/products_images/aments_products_image_5.jpg" alt="">
-                        </div>
-                        <div class="product-image-thumb-single">
-                            <img class="img-fluid" src="~/images/products_images/aments_products_image_6.jpg" alt="">
-                        </div>
+
+                        @{
+                            for (int i = 1; i < 9; i++)
+                            {
+                                var url = $"{ViewBag.wwwroot}/images/products_images/{Model.Id}S{i}.jpg";
+
+                                if (File.Exists(url))
+                                {
+                                    url = $"/images/products_images/{Model.Id}S{i}.jpg";
+
+                                    <div class="zoom-active product-image-thumb-single">
+                                        <img class="img-fluid" src="@url" alt="">
+                                    </div>
+                                }
+                            }
+                        }
+
                     </div>
                 </div>
             </div>
