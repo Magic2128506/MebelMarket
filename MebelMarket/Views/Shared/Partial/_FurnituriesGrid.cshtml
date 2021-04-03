@@ -1,4 +1,6 @@
-﻿                <!-- Start Tab Wrapper -->
+﻿@using System.IO
+
+<!-- Start Tab Wrapper -->
 <div class="sort-product-tab-wrapper">
     <div class="container">
         <div class="row">
@@ -13,8 +15,23 @@
                                 <div class="col-xl-4 col-sm-6 col-12">
                                     <div class="product-default-single border-around">
                                         <div class="product-img-warp">
+
+                                            @{
+                                                var url = $"{ViewBag.wwwroot}/images/products_images/{product.Id}S1.jpg";
+
+                                                if (File.Exists(url))
+                                                {
+                                                    url = $"/images/products_images/{product.Id}S1.jpg";
+
+                                                }
+                                                else
+                                                {
+                                                    url = $"/images/products_images/default.jpg";
+                                                }
+                                            }
+
                                             <a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id" class="product-default-img-link">
-                                                <img src="~/images/products_images/aments_products_image_1.jpg" alt="" class="product-default-img img-fluid">
+                                                <img src="@url" alt="" class="product-default-img img-fluid">
                                             </a>
                                             <div class="product-action-icon-link">
                                                 <ul>

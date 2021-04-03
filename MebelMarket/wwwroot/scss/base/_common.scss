@@ -121,16 +121,15 @@ input{width: 100%;}
 }
 
 .section-inner-bg{
-    background: $gray-100;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     @include breakpoint(medium){
-        padding-top: 80px;
-        padding-bottom: 80px;
+        padding-top: 0px;
+        padding-bottom: 0px;
     }
     @include breakpoint(large){
-        padding-top: 100px;
-        padding-bottom: 100px;
+        padding-top: 0px;
+        padding-bottom: 0px;
     }
 }
 

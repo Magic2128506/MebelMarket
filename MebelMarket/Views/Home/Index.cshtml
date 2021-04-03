@@ -2,6 +2,7 @@
 @inject IFurnitureData catalog;
 @using MebelMarket.Infrastructure.Interfaces
 @using MebelMarket.Infrastructure.Mapping
+@using System.IO
 
 @{
     ViewData["Title"] = "МебельМаркет - качественная мебель по доступным ценам";
@@ -38,54 +39,42 @@
             <div class="col-lg-8">
                 <!-- ...:::: Start Hero Area Section:::... -->
                 <div class="hero-area-wrapper hero-slider-dots fix-slider-dots">
-                    <!-- Start Hero Slider Single -->
-                    <div class="hero-area-single">
-                        <div class="hero-area-bg-2">
-                            <img class="hero-img-2 opacity-50" src="~/images/slider_images/home_2/aments_home_2_slider_1.jpeg" alt="">
-                        </div>
-                        <div class="hero-content hero-content-2">
-                            <div class="row">
-                                <div class="col-10 col-md-8 col-xl-6 offset-1">
-                                    <h5>Мировое качество</h5>
-                                    <h2>Табуретка</h2>
-                                    <p class="hero-text">Ручная работа</p>
-                                    <a asp-controller="Furniture" asp-action="Index" asp-route-id="1" class="hero-button">Купить</a>
+                    @{
+                        var list = catalog.GetLastFurnitures().Take(3);
+                        var url = $"{ViewBag.wwwroot}/images/products_images/";
+
+                        foreach (var product in list)
+                        {
+                            <div class="hero-area-single">
+                                <div class="hero-area-bg-2">
+
+                                    @if (File.Exists($"{url}/{product.Id}L.jpg"))
+                                    {
+                                        url = $"/images/products_images/{product.Id}L.jpg";
+
+                                        <img class="hero-img-2 opacity-50" src="@url" alt="">
+                                    }
+                                    else
+                                    {
+                                        <img class="hero-img-2 opacity-50" src="~/images/products_images/defaultL.jpg" alt="">
+                                    }
+
+
+                                </div>
+                                <div class="hero-content hero-content-2">
+                                    <div class="row">
+                                        <div class="col-10 col-md-8 col-xl-6 offset-1">
+                                            <h2>@product.Name</h2>
+                                            <h5>@product.Description</h5>
+                                            <br />
+                                            <p class="hero-text">@product.Price</p>
+                                            <a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id" class="hero-button">Подробнее</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div> <!-- End Hero Slider Single -->
-                    <!-- Start Hero Slider Single -->
-                    <div class="hero-area-single">
-                        <div class="hero-area-bg-2">
-                            <img class="hero-img-2" src="~/images/slider_images/home_2/aments_home_2_slider_1.jpg" alt="">
-                        </div>
-                        <div class="hero-content hero-content-2">
-                            <div class="row">
-                                <div class="col-10 col-md-8 col-xl-6 offset-1">
-                                    <h5>World Best Quality</h5>
-                                    <h2>Car Parts</h2>
-                                    <p class="hero-text">Lorem ipsum dolor sit amet consectet</p>
-                                    <a asp-controller="Furniture" asp-action="Index" asp-route-id="1" class="hero-button">Shopping Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- End Hero Slider Single -->
-                    <!-- Start Hero Slider Single -->
-                    <div class="hero-area-single">
-                        <div class="hero-area-bg-2">
-                            <img class="hero-img-2" src="~/images/slider_images/home_2/aments_home_2_slider_2.jpg" alt="">
-                        </div>
-                        <div class="hero-content hero-content-2">
-                            <div class="row">
-                                <div class="col-10 col-md-8 col-xl-6 offset-1">
-                                    <h5>World Best Quality</h5>
-                                    <h2>Car Parts</h2>
-                                    <p>Lorem ipsum dolor sit amet consectet</p>
-                                    <a asp-controller="Furniture" asp-action="Index" asp-route-id="1" class="hero-button">Shopping Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- End Hero Slider Single -->
+                        }
+                    }
                 </div> <!-- ...:::: End Hero Area Section:::... -->
             </div>
         </div>
@@ -121,122 +110,3 @@
         </div>
     </div> <!-- End Catagory Wrapper -->
 </div> <!-- ...:::: End Product Tab Section:::... -->
-<!-- Start Modal Quickview cart -->
-<div class="modal fade" id="modalQuickview" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col text-right">
-                            <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true"> <i class="fa fa-times"></i></span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="product-details-gallery-area">
-                                <div class="product-large-image modal-product-image-large">
-                                    <div class="product-image-large-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_1.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-large-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_2.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-large-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_3.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-large-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_4.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-large-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_5.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-large-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_6.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="product-image-thumb modal-product-image-thumb">
-                                    <div class="zoom-active product-image-thumb-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_1.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-thumb-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_2.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-thumb-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_3.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-thumb-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_4.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-thumb-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_5.jpg" alt="">
-                                    </div>
-                                    <div class="product-image-thumb-single">
-                                        <img class="img-fluid" src="~/images/products_images/aments_products_image_6.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="product-details-content-area">
-                                <!-- Start  Product Details Text Area-->
-                                <div class="product-details-text">
-                                    <h4 class="title">Nonstick Dishwasher PFOA</h4>
-                                    <div class="price"><del>$70.00</del>$80.00</div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam, reiciendis maiores quidem aperiam, rerum vel recusandae</p>
-                                </div> <!-- End  Product Details Text Area-->
-                                <!-- Start Product Variable Area -->
-                                <div class="product-details-variable">
-                                    <!-- Product Variable Single Item -->
-                                    <div class="variable-single-item">
-                                        <span>Цвет</span>
-                                        <div class="product-variable-color">
-                                            <label for="modal-product-color-red">
-                                                <input name="modal-product-color" id="modal-product-color-red" class="color-select" type="radio" checked>
-                                                <span class="product-color-red"></span>
-                                            </label>
-                                            <label for="modal-product-color-tomato">
-                                                <input name="modal-product-color" id="modal-product-color-tomato" class="color-select" type="radio">
-                                                <span class="product-color-tomato"></span>
-                                            </label>
-                                            <label for="modal-product-color-green">
-                                                <input name="modal-product-color" id="modal-product-color-green" class="color-select" type="radio">
-                                                <span class="product-color-green"></span>
-                                            </label>
-                                            <label for="modal-product-color-light-green">
-                                                <input name="modal-product-color" id="modal-product-color-light-green" class="color-select" type="radio">
-                                                <span class="product-color-light-green"></span>
-                                            </label>
-                                            <label for="modal-product-color-blue">
-                                                <input name="modal-product-color" id="modal-product-color-blue" class="color-select" type="radio">
-                                                <span class="product-color-blue"></span>
-                                            </label>
-                                            <label for="modal-product-color-light-blue">
-                                                <input name="modal-product-color" id="modal-product-color-light-blue" class="color-select" type="radio">
-                                                <span class="product-color-light-blue"></span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div class="variable-single-item ">
-                                            <span>Количество</span>
-                                            <div class="product-variable-quantity">
-                                                <input min="1" max="100" value="1" type="number">
-                                            </div>
-                                        </div>
-
-                                        <div class="product-add-to-cart-btn">
-                                            <a href="#" data-toggle="modal" data-target="#modalAddcart">Купить</a>
-                                        </div>
-                                    </div>
-                                </div> <!-- End Product Variable Area -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!-- End Modal Quickview cart -->

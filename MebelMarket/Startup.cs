@@ -1,5 +1,6 @@
 using MebelMarket.Infrastructure.Interfaces;
 using MebelMarket.Infrastructure.Services.InSQL;
+using MebelMarket.Infrastructure.Services.Notify;
 using MebelMarket.SqlDataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +23,8 @@ namespace MebelMarket
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<Notify>();
+
             services.AddControllersWithViews();
 
             services.AddDbContext<MebelMarketContext>(opt =>

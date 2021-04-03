@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
+using MebelMarket.Infrastructure.Services.Notify;
 
 namespace MebelMarket.Controllers
 {
@@ -13,11 +14,13 @@ namespace MebelMarket.Controllers
     {
         private readonly IFurnitureData _FurnitureData;
         private readonly IWebHostEnvironment _environment;
+        private readonly Notify _notify;
 
-        public FurnitureController(IFurnitureData FurnitureData, IWebHostEnvironment environment)
+        public FurnitureController(IFurnitureData FurnitureData, IWebHostEnvironment environment, Notify notify)
         {
             _FurnitureData = FurnitureData;
             _environment = environment;
+            _notify = notify;
         }
 
         public IActionResult Index(int? id)
@@ -43,7 +46,7 @@ namespace MebelMarket.Controllers
             return View(furniture.ToView());
         }
 
-        public IActionResult Grid(int? id)
+        public IActionResult Grid(int? id, [FromQuery(Name = "page")] string pageId)
         {
             if (id <= 0 || id == null)
             {
@@ -52,9 +55,31 @@ namespace MebelMarket.Controllers
                 return View(LastFurnitures.ToView());
             }
 
+            int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
+            int categoryId = 0;
             var furnitures = _FurnitureData.GetByType(id.Value);
+            int start = 21 * (pageIdValue - 1);
+            int lastCount = furnitures.Count() - start;
+            int count = lastCount < 21 ? lastCount : 21;
 
-            return View(furnitures.ToView());
+            decimal helper = (decimal)furnitures.Count() / (decimal)21;
+            var pagesCount = Math.Ceiling(helper);
+
+            if (count < 1)
+            {
+                string url = $"/Furniture/Grid/{id.Value}";
+
+                return Redirect(url);
+            }
+
+            var returnList = furnitures.ToList().GetRange(start, count);
+
+            ViewBag.usedFilter = "Grid";
+            ViewBag.usedPage = pageIdValue;
+            ViewBag.usedCategory = categoryId;
+            ViewBag.pagesCount = pagesCount;
+
+            return View(returnList.ToView());
         }
 
         public IActionResult Search([FromQuery(Name = "Search")] string search)
@@ -75,9 +100,6 @@ namespace MebelMarket.Controllers
             if (furnitures is null)
                 return View(nameof(Grid));
 
-            decimal helper = (decimal)furnitures.Count() / (decimal)21;
-            var page = Math.Ceiling(helper);
-
             string url = $"/Furniture/ViewPageByCategory?page=1&categoryId={id}";
 
             return Redirect(url);
@@ -91,7 +113,23 @@ namespace MebelMarket.Controllers
             int start = 21 * (pageId - 1);
             int lastCount = furnitures.Count() - start;
             int count = lastCount < 21 ? lastCount : 21;
+
+            decimal helper = (decimal)furnitures.Count() / (decimal)21;
+            var pagesCount = Math.Ceiling(helper);
+
+            if (count < 1)
+            {
+                string url = $"/Furniture/ViewPageByCategory?page=1&categoryId=1";
+
+                return Redirect(url);
+            }
+
             var returnList = furnitures.ToList().GetRange(start, count);
+
+            ViewBag.usedFilter = "ViewPageByCategory";
+            ViewBag.usedPage = pageId;
+            ViewBag.usedCategory = catId;
+            ViewBag.pagesCount = pagesCount;
 
             return View($"Grid", returnList.ToView());
         }
@@ -195,6 +233,13 @@ namespace MebelMarket.Controllers
             _FurnitureData.SaveChanges();
 
             return View(nameof(Grid));
+        }
+
+        public IActionResult SendEmail()
+        {
+            _notify.SendEmail("timur_nasibullin@mail.ru", "Hello");
+
+            return Redirect("Grid/0");
         }
     }
 }
