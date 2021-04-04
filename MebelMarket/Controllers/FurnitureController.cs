@@ -65,11 +65,7 @@ namespace MebelMarket.Controllers
 
             if (count < 1)
             {
-                string idValue = id == null ? "0" : id.Value.ToString();
-
-                string url = $"/Furniture/Grid/{idValue}";
-
-                return Redirect(url);
+                return View(nameof(Grid));
             }
 
             var returnList = furnitures.ToList().GetRange(start, count);
@@ -119,9 +115,7 @@ namespace MebelMarket.Controllers
 
             if (count < 1)
             {
-                string url = $"/Furniture/ViewPageByCategory?page=1&categoryId=1";
-
-                return Redirect(url);
+                return View(nameof(Grid));
             }
 
             var returnList = furnitures.ToList().GetRange(start, count);
@@ -151,18 +145,62 @@ namespace MebelMarket.Controllers
             return Redirect($"Index/{model.Id}");
         }
 
-        public IActionResult ViewForOffice()
+        public IActionResult ViewForOffice([FromQuery(Name = "page")] string pageId)
         {
+            int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
+            int categoryId = 0;
+
             var furnitures = _FurnitureData.GetForOfficeFurnitures();
 
-            return View(nameof(Grid), furnitures.ToView());
+            int start = 21 * (pageIdValue - 1);
+            int lastCount = furnitures.Count() - start;
+            int count = lastCount < 21 ? lastCount : 21;
+
+            decimal helper = (decimal)furnitures.Count() / (decimal)21;
+            var pagesCount = Math.Ceiling(helper);
+
+            if (count < 1)
+            {
+                return View(nameof(Grid));
+            }
+
+            var returnList = furnitures.ToList().GetRange(start, count);
+
+            ViewBag.usedFilter = "Grid";
+            ViewBag.usedPage = pageIdValue;
+            ViewBag.usedCategory = categoryId;
+            ViewBag.pagesCount = pagesCount;
+
+            return View(nameof(Grid), returnList.ToView());
         }
 
-        public IActionResult ViewForHome()
+        public IActionResult ViewForHome([FromQuery(Name = "page")] string pageId)
         {
+            int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
+            int categoryId = 0;
+
             var furnitures = _FurnitureData.GetForHomeFurnitures();
 
-            return View(nameof(Grid), furnitures.ToView());
+            int start = 21 * (pageIdValue - 1);
+            int lastCount = furnitures.Count() - start;
+            int count = lastCount < 21 ? lastCount : 21;
+
+            decimal helper = (decimal)furnitures.Count() / (decimal)21;
+            var pagesCount = Math.Ceiling(helper);
+
+            if (count < 1)
+            {
+                return View(nameof(Grid));
+            }
+
+            var returnList = furnitures.ToList().GetRange(start, count);
+
+            ViewBag.usedFilter = "Grid";
+            ViewBag.usedPage = pageIdValue;
+            ViewBag.usedCategory = categoryId;
+            ViewBag.pagesCount = pagesCount;
+
+            return View(nameof(Grid), returnList.ToView());
         }
 
         public IActionResult Edit(int? Id)

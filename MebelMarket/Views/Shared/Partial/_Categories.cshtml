@@ -11,7 +11,7 @@
                 for (int i = 1; i < @catalog.GetAllCategories().Count() + 1; i++)
                 {
                     <li class="mega-menu-item">
-                                    <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="@i" class="mega-menu-item-title">@catalog.GetAllCategories().FirstOrDefault(x => x.Id == i).Name</a>
+                        <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="@i" class="mega-menu-item-title">@catalog.GetAllCategories().FirstOrDefault(x => x.Id == i).Name</a>
                         <ul class="mega-menu-sub">
                             @foreach (var product in Model.Where(x => x.Category == i))
                             {

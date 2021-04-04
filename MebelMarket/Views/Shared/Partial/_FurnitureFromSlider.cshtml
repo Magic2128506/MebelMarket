@@ -1,30 +1,35 @@
 ﻿@model IEnumerable<FurnitureViewModel>
 @using System.IO
 
-@foreach (var product in Model)
-{
-    <div class="product-default-single border-around">
-        <div class="product-img-warp">
-            <a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id" class="product-default-img-link">
-                @{
-                    var url = $"{ViewBag.wwwroot}/images/products_images/{product.Id}S1.jpg";
+@{
+    if (Model != null)
+    {
+        foreach (var product in Model)
+        {
+            <div class="product-default-single border-around">
+                <div class="product-img-warp">
+                    <a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id" class="product-default-img-link">
+                        @{
+                            var url = $"{ViewBag.wwwroot}/images/products_images/{product.Id}S1.jpg";
 
-                    if (File.Exists(url))
-                    {
-                        url = $"/images/products_images/{product.Id}S1.jpg";
+                            if (File.Exists(url))
+                            {
+                                url = $"/images/products_images/{product.Id}S1.jpg";
 
-                    }
-                    else
-                    {
-                        url = $"/images/products_images/default.jpg";
-                    }
-                }
-                <img src="@url" alt="" class="product-default-img img-fluid">
-            </a>
-        </div>
-        <div class="product-default-content">
-            <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id">@product.Name</a></h6>
-            <span class="product-default-price">@product.Price</span>
-        </div>
-    </div>
+                            }
+                            else
+                            {
+                                url = $"/images/products_images/default.jpg";
+                            }
+                        }
+                        <img src="@url" alt="" class="product-default-img img-fluid">
+                    </a>
+                </div>
+                <div class="product-default-content">
+                    <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id">@product.Name</a></h6>
+                    <span class="product-default-price">@product.Price</span>
+                </div>
+            </div>
+        }
+    }
 }
