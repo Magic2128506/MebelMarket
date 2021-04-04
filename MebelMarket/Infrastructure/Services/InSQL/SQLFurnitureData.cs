@@ -109,5 +109,13 @@ namespace MebelMarket.Infrastructure.Services.InSQL
 
         public IEnumerable<FurnitureCategory> GetAllCategories()
             => _db.FurnitureCategories.ToList();
+
+        public void CreateNewOrder(Order order)
+        {
+            if (order is null)
+                throw new ArgumentNullException(nameof(order));
+
+            _db.Add(order);
+        }
     }
 }

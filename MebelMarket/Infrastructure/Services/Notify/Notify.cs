@@ -18,9 +18,9 @@ namespace MebelMarket.Infrastructure.Services.Notify
             try
             {
                 var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("Моя компания", "magicntr@gmail.com"));
+                message.From.Add(new MailboxAddress("МебельМаркет бот", "magicntr@gmail.com"));
                 message.To.Add(new MailboxAddress(to));
-                message.Subject = text;
+                message.Subject = "Новый заказ на сайте!";
                 message.Body = new BodyBuilder() { HtmlBody = $"<div style=\"color: green;\">{text}</div>" }.ToMessageBody();
 
                 using (var client = new MailKit.Net.Smtp.SmtpClient())

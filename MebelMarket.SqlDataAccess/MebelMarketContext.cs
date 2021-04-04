@@ -16,6 +16,7 @@ namespace MebelMarket.SqlDataAccess
         public DbSet<Furniture> Furnitures { get; set; }
         public DbSet<FurnitureType> FurnitureTypes { get; set; }
         public DbSet<FurnitureCategory> FurnitureCategories { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

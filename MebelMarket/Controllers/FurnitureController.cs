@@ -235,9 +235,16 @@ namespace MebelMarket.Controllers
             return View(nameof(Grid));
         }
 
-        public IActionResult SendEmail()
+        public IActionResult SendEmail(OrderViewModel orderVM)
         {
-            _notify.SendEmail("timur_nasibullin@mail.ru", "Hello");
+            if (!ModelState.IsValid)
+                return View();
+
+            var order = orderVM.FromView();
+            _FurnitureData.CreateNewOrder(order);
+            _FurnitureData.SaveChanges();
+
+            _notify.SendEmail("timur_nasibullin@mail.ru", $"Поступил новый заказ от клиента. Имя: {order.Name}. Телефон: {order.Phone}. Товар: {order.Description}");
 
             return Redirect("Grid/0");
         }
