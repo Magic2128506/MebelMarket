@@ -81,8 +81,7 @@ namespace MebelMarket.Infrastructure.Services.InSQL
 
         public IEnumerable<Furniture> GetLastFurnitures()
             => _db.Furnitures
-            .OrderByDescending(x => x.Id)
-            .Take(21);
+            .OrderByDescending(x => x.Id);
 
         public IEnumerable<Furniture> GetNewList()
             => _db.Furnitures

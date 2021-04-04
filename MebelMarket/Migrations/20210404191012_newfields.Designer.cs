@@ -4,14 +4,16 @@ using MebelMarket.SqlDataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MebelMarket.Migrations
 {
     [DbContext(typeof(MebelMarketContext))]
-    partial class MebelMarketContextModelSnapshot : ModelSnapshot
+    [Migration("20210404191012_newfields")]
+    partial class newfields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,7 +34,7 @@ namespace MebelMarket.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DiscountValue")
+                    b.Property<int>("DiscountValue")
                         .HasColumnType("int");
 
                     b.Property<string>("FacadeMaterial")
@@ -44,8 +46,8 @@ namespace MebelMarket.Migrations
                     b.Property<bool>("ForOffice")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Height")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Height")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsFeatured")
                         .HasColumnType("bit");
@@ -53,8 +55,8 @@ namespace MebelMarket.Migrations
                     b.Property<bool>("IsNew")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Length")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Length")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -68,8 +70,8 @@ namespace MebelMarket.Migrations
                     b.Property<string>("Upholstery")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Width")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Width")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -33,7 +33,7 @@ namespace MebelMarket.Controllers
 
             if (id == 0)
             {
-                var lastFurnitures = _FurnitureData.GetLastFurnitures();
+                var lastFurnitures = _FurnitureData.GetLastFurnitures().Take(21);
 
                 return View(lastFurnitures.ToView());
             }
@@ -48,16 +48,14 @@ namespace MebelMarket.Controllers
 
         public IActionResult Grid(int? id, [FromQuery(Name = "page")] string pageId)
         {
-            if (id <= 0 || id == null)
-            {
-                var LastFurnitures = _FurnitureData.GetLastFurnitures();
-
-                return View(LastFurnitures.ToView());
-            }
 
             int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
             int categoryId = 0;
-            var furnitures = _FurnitureData.GetByType(id.Value);
+
+            var furnitures = id <= 0 || id == null
+                ? _FurnitureData.GetLastFurnitures()
+                : _FurnitureData.GetByType(id.Value);
+
             int start = 21 * (pageIdValue - 1);
             int lastCount = furnitures.Count() - start;
             int count = lastCount < 21 ? lastCount : 21;
@@ -67,7 +65,9 @@ namespace MebelMarket.Controllers
 
             if (count < 1)
             {
-                string url = $"/Furniture/Grid/{id.Value}";
+                string idValue = id == null ? "0" : id.Value.ToString();
+
+                string url = $"/Furniture/Grid/{idValue}";
 
                 return Redirect(url);
             }

@@ -40,7 +40,7 @@
                 <!-- ...:::: Start Hero Area Section:::... -->
                 <div class="hero-area-wrapper hero-slider-dots fix-slider-dots">
                     @{
-                        var list = catalog.GetLastFurnitures().Take(3);
+                        var list = catalog.GetNewList().Take(3);
                         var url = $"{ViewBag.wwwroot}/images/products_images/";
 
                         foreach (var product in list)

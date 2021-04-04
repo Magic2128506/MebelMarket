@@ -23,5 +23,14 @@ namespace MebelMarket.Domain
         public bool IsFeatured { get; set; }
 
         public bool ForOffice { get; set; }
+
+        public string Width { get; set; }
+        public string Height { get; set; }
+        public string Length { get; set; }
+        public string Upholstery { get; set; }
+        public string Filler { get; set; }
+        public string BodyMaterial { get; set; }
+        public string FacadeMaterial { get; set; }
+        public int? DiscountValue { get; set; }
     }
 }

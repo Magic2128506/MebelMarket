@@ -16,21 +16,37 @@ namespace MebelMarket.Infrastructure.Mapping
             Description = f.Description,
             IsFeatured = f.IsFeatured,
             IsNew = f.IsNew,
-            ForOffice = f.ForOffice
+            ForOffice = f.ForOffice,
+            Width = f.Width,
+            Height = f.Height,
+            Length = f.Length,
+            Upholstery = f.Upholstery,
+            Filler = f.Filler,
+            BodyMaterial = f.BodyMaterial,
+            FacadeMaterial = f.FacadeMaterial,
+            DiscountValue = f.DiscountValue
         };
 
         public static IEnumerable<FurnitureViewModel> ToView(this IEnumerable<Furniture> f) => f.Select(ToView);
 
-        public static Furniture FromView(this FurnitureViewModel vwm) => new Furniture
+        public static Furniture FromView(this FurnitureViewModel fvm) => new Furniture
         {
-            Id = vwm.Id,
-            Name = vwm.Name,
-            Type = vwm.Type,
-            Price = vwm.Price,
-            Description = vwm.Description,
-            IsFeatured = vwm.IsFeatured,
-            IsNew = vwm.IsNew,
-            ForOffice = vwm.ForOffice
+            Id = fvm.Id,
+            Name = fvm.Name,
+            Type = fvm.Type,
+            Price = fvm.Price,
+            Description = fvm.Description,
+            IsFeatured = fvm.IsFeatured,
+            IsNew = fvm.IsNew,
+            ForOffice = fvm.ForOffice,
+            Width = fvm.Width,
+            Height = fvm.Height,
+            Length = fvm.Length,
+            Upholstery = fvm.Upholstery,
+            Filler = fvm.Filler,
+            BodyMaterial = fvm.BodyMaterial,
+            FacadeMaterial = fvm.FacadeMaterial,
+            DiscountValue = fvm.DiscountValue
         };
     }
 }
