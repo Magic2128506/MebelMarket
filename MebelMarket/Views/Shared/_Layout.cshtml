@@ -83,10 +83,13 @@
                                     </li>
                                     <partial name="Partial/_Categories" model="@catalog.GetAllTypes().ToView()" />
                                     <li>
-                                        <a href="about-us.html">Доставка</a>
+                                        <a asp-controller="Home" asp-action="Delivery">Доставка</a>
                                     </li>
                                     <li>
-                                        <a href="contact-us.html">Контакты</a>
+                                        <a asp-controller="Home" asp-action="AboutUs">О Нас</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Home" asp-action="Contacts">Контакты</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -163,7 +166,9 @@
                             </ul>
                         </li>
                         <partial name="Partial/_CategoriesMobile" model="@catalog.GetAllTypes().ToView()" />
-                        <li><a href="contact-us.html">Контакты</a></li>
+                        <li><a asp-controller="Home" asp-action="Delivery">Доставка</a></li>
+                        <li><a asp-controller="Home" asp-action="AboutUs">О нас</a></li>
+                        <li><a asp-controller="Home" asp-action="Contacts">Контакты</a></li>
                     </ul>
                 </div> <!-- End Mobile Menu Nav -->
                 <!-- Mobile Manu Mail Address -->
@@ -183,7 +188,7 @@
     @RenderBody()
 
     <!-- ...:::: Start Footer Section:::... -->
-    <footer class="footer-section section-top-gap-100">
+    <footer class="footer-section section-top-gap-100" style="margin-top: 35px;">
         <!-- Start Footer Top Area -->
         <div class="footer-top section-inner-bg">
             <div class="container">
@@ -206,19 +211,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-5 col-sm-7">
-                        <div class="footer-widget footer-widget-subscribe">
-                            <partial name="Partial/_SocialLinks" model="Model" />
-                        </div>
-                    </div>
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="footer-widget footer-widget-menu">
                             <h3 class="footer-widget-title">Информация</h3>
                             <div class="footer-menu">
                                 <ul class="footer-menu-nav">
-                                    <li><a href="">Доставка</a></li>
-                                    <li><a href="about-us.html">О нас</a></li>
-                                    <li><a href="contact-us.html">Контакты</a></li>
+                                    <li><a asp-controller="Home" asp-action="Delivery">Доставка</a></li>
+                                    <li><a asp-controller="Home" asp-action="AboutUs">О нас</a></li>
+                                    <li><a asp-controller="Home" asp-action="Contacts">Контакты</a></li>
                                 </ul>
                             </div>
                         </div>

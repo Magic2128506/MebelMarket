@@ -244,9 +244,19 @@ namespace MebelMarket.Controllers
             _FurnitureData.CreateNewOrder(order);
             _FurnitureData.SaveChanges();
 
-            _notify.SendEmail("timur_nasibullin@mail.ru", $"Поступил новый заказ от клиента. Имя: {order.Name}. Телефон: {order.Phone}. Товар: {order.Description}");
+            var info = order.Description.Split(',');
+            var message = $"ID - {info[0]}, Название - {info[1]}, Цена - {info[2]}";
 
-            return Redirect("Grid/0");
+            _notify.SendEmail("timur_nasibullin@mail.ru", $"Поступил новый заказ от клиента. Имя: {order.Name}. Телефон: {order.Phone}. Товар: {message}");
+
+            var furniture = _FurnitureData.GetById(int.Parse(info[0]));
+
+            return View($"OrderConfirm", furniture.ToView());
+        }
+
+        public IActionResult OrderConfirm(FurnitureViewModel furnitureViewModel)
+        {
+            return View();
         }
     }
 }

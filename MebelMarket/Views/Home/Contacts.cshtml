@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = $"Доставка - МебельМаркет";
+}
+
+<div class="map-section" style="margin-top: 30px; margin-bottom: 15px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8a6e64acb6f9e762c9a8d122cf41cfb04bb9b8deb8a3b8038df6390bef0edc1d&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- ...::::End  Map Section:::... -->
+<!-- ...::::Start Contact Section:::... -->
+<div class="contact-section" style="margin-top: 15px; margin-bottom: 30px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <!-- Start Contact Details -->
+                <div class="contact-details-wrapper section-top-gap-100">
+                    <div class="contact-details">
+                        <!-- Start Contact Details Single Item -->
+                        <div class="contact-details-single-item">
+                            <div class="contact-details-icon">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="contact-details-content contact-phone">
+                                <a href="tel:(+7)9373216103">+7-937-321-61-03</a>
+                            </div>
+                        </div> <!-- End Contact Details Single Item -->
+                        <!-- Start Contact Details Single Item -->
+                        <div class="contact-details-single-item">
+                            <div class="contact-details-icon">
+                                <i class="fa fa-globe"></i>
+                            </div>
+                            <div class="contact-details-content contact-phone">
+                                <a href="mailto:urname@email.com">urname@email.com</a>
+                            </div>
+                        </div> <!-- End Contact Details Single Item -->
+
+                        <div class="contact-details-single-item">
+                            <div class="contact-details-icon">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <div class="contact-details-content contact-phone">
+                                <span>г. Уфа</span>
+                                <span>полный адрес</span>
+                            </div>
+                        </div>
+                        <div class="contact-details-single-item">
+                            <div class="contact-details-icon">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <div class="contact-details-content contact-phone">
+                                <span>г. Янаул</span>
+                                <span>полный адрес</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Contact Details -->
+            </div>
+            <div class="col-lg-4" style="margin-top: 15px;"><partial name="Partial/_SocialLinks" model="Model" /></div>
+        </div>
+    </div>
+</div>

@@ -131,7 +131,7 @@
 </div> <!-- End Product Content Tab Section -->
 
 @{
-    var info = $"ID - {Model.Id}, Название - {Model.Name}, Цена - {Model.Price}";
+    var info = $"{Model.Id.ToString()},{Model.Name},{Model.Price}";
 }
 
 <div class="modal fade" id="modalAddcart" tabindex="-1" role="dialog" aria-hidden="true">

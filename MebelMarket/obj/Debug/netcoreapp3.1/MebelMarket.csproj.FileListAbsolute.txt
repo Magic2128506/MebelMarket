@@ -323,7 +323,6 @@ C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильн
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\MebelMarket.TagHelpers.output.cache
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\MebelMarket.RazorCoreGenerate.cache
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -391,3 +390,7 @@ C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильн
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\bin\Debug\netcoreapp3.1\MimeKit.dll
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Partial\_Order.cshtml.g.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Furniture\OrderConfirm.cshtml.g.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Home\Delivery.cshtml.g.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contacts.cshtml.g.cs
+C:\Users\Magic\Documents\Бизнес\Мебельный магазин Ильнур\MebelMarket\MebelMarket\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs

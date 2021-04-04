@@ -28,7 +28,17 @@ namespace MebelMarket.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Delivery()
+        {
+            return View();
+        }
+
+        public IActionResult Contacts()
+        {
+            return View();
+        }
+
+        public IActionResult AboutUs()
         {
             return View();
         }

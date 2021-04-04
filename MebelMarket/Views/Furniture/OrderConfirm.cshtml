@@ -1,0 +1,16 @@
+﻿@model FurnitureViewModel
+
+@{
+    ViewData["Title"] = $"{Model.Name} - МебельМаркет";
+}
+
+<div class="container">
+    <div class="row text-nowrap text-dark" style="margin-top: 50px; margin-bottom: 50px;">
+        <h2>Заказ успешно получен</h2>
+        <p>Наш менеджер в скором времени свяжется с вами</p>
+        <div class="col-2">
+            <a asp-controller="Furniture" asp-action="Index" asp-route-id="@Model.Id" class="hero-button">Вернуться назад</a>
+        </div>
+        
+    </div>
+</div>
