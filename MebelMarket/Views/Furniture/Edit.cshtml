@@ -30,24 +30,66 @@
         </div>
         <br />
         <div class="form-group">
-            <span>
-                <input asp-for="IsNew" class="checkbox">
-                Новинка
-            </span>
+            <label asp-for="IsNew" class="control-label"></label>
+            <input asp-for="IsNew" class="checkbox">
+            <span asp-validation-for="IsNew" class="text-danger"></span>
         </div>
         <br />
         <div class="form-group">
-            <span>
-                <input asp-for="IsFeatured" class="checkbox">
-                Распродажа
-            </span>
+            <label asp-for="IsFeatured" class="control-label"></label>
+            <input asp-for="IsFeatured" class="checkbox">
         </div>
         <br />
         <div class="form-group">
-            <span>
-                <input asp-for="ForOffice" class="checkbox">
-                Офисная мебель
-            </span>
+            <label asp-for="ForOffice" class="control-label"></label>
+            <input asp-for="ForOffice" class="checkbox">
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="Width" class="control-label"></label>
+            <input asp-for="Width" class="form-control">
+        </div>
+
+        <br />
+        <div class="form-group">
+            <label asp-for="Height" class="control-label"></label>
+            <input asp-for="Height" class="form-control">
+        </div>
+
+        <br />
+        <div class="form-group">
+            <label asp-for="Length" class="control-label"></label>
+            <input asp-for="Length" class="form-control">
+        </div>
+
+        <br />
+        <div class="form-group">
+            <label asp-for="Upholstery" class="control-label"></label>
+            <input asp-for="Upholstery" class="form-control">
+        </div>
+
+        <br />
+        <div class="form-group">
+            <label asp-for="Filler" class="control-label"></label>
+            <input asp-for="Filler" class="form-control">
+        </div>
+
+        <br />
+        <div class="form-group">
+            <label asp-for="BodyMaterial" class="control-label"></label>
+            <input asp-for="BodyMaterial" class="form-control">
+        </div>
+
+        <br />
+        <div class="form-group">
+            <label asp-for="FacadeMaterial" class="control-label"></label>
+            <input asp-for="FacadeMaterial" class="form-control">
+        </div>
+
+        <br />
+        <div class="form-group">
+            <label asp-for="DiscountValue" class="control-label"></label>
+            <input asp-for="DiscountValue" class="form-control">
         </div>
         <br />
         <div class="form-group">

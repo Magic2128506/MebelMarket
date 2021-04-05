@@ -67,7 +67,23 @@
                                             <h2>@product.Name</h2>
                                             <h5>@product.Description</h5>
                                             <br />
-                                            <p class="hero-text">@product.Price</p>
+                                            <p class="hero-text">
+                                                @{
+                                                    var priceValue = String.Format("{0:0.##}", product.Price);
+
+                                                    if (product.DiscountValue != null)
+                                                    {
+                                                        <del class="product-default-price-off">@priceValue</del>
+                                                        var price = product.Price * (100 - product.DiscountValue.Value) / 100;
+                                                        var discountPriceValue = String.Format("{0:0.##}", price);
+                                                        @discountPriceValue
+                                                    }
+                                                    else
+                                                    {
+                                                        @priceValue
+                                                    }
+                                                }
+                                            </p>
                                             <a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id" class="hero-button">Подробнее</a>
                                         </div>
                                     </div>

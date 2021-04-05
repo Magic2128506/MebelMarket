@@ -39,7 +39,23 @@
                                                 </div>
                                                 <div class="product-default-content">
                                                     <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id">@product.Name</a></h6>
-                                                    <span class="product-default-price">@product.Price</span>
+                                                    <span class="product-default-price">
+                                                        @{
+                                                            var priceValue = String.Format("{0:0.##}", product.Price);
+
+                                                            if (product.DiscountValue != null)
+                                                            {
+                                                                <del class="product-default-price-off">@priceValue</del>
+                                                                var price = product.Price * (100 - product.DiscountValue.Value) / 100;
+                                                                var discountPriceValue = String.Format("{0:0.##}", price);
+                                                                @discountPriceValue
+                                                            }
+                                                            else
+                                                            {
+                                                                @priceValue
+                                                            }
+                                                        }
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,37 +65,6 @@
 
                         </div>
                     </div> <!-- End Grid View Product -->
-                    <!-- Start List View Product -->
-                    <div class="tab-pane sort-layout-single" id="layout-list">
-                        <div class="row">
-                            @{
-                                if (Model != null)
-                                {
-                                    foreach (var product in Model)
-                                    {
-                                        <div class="col-12">
-                                            <!-- Start Product Defautlt Single -->
-                                            <div class="product-list-single border-around">
-                                                <a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id" class="product-list-img-link">
-                                                    <img src="~/images/products_images/aments_products_image_5.jpg" alt="" class="img-fluid">
-                                                </a>
-                                                <div class="product-list-content">
-                                                    <h5 class="product-list-link"><a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id">@product.Name</a></h5>
-                                                    <span class="product-list-price"><del class="product-list-price-off">$30.12</del> @product.Price</span>
-                                                    <p>@product.Description</p>
-                                                    <div class="product-action-icon-link-list">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="modal" data-target="#modalAddcart"><i class="icon-shopping-cart"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- End Product Defautlt Single -->
-                                        </div>
-                                    }
-                                }
-                            }
-                        </div>
-                    </div> <!-- End List View Product -->
                 </div>
             </div>
         </div>

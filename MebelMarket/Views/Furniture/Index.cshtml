@@ -71,27 +71,82 @@
                     <!-- Start  Product Details Text Area-->
                     <div class="product-details-text">
                         <h4 class="title">@Model.Name</h4>
-                        <div class="d-flex align-items-center">
-                            <div class="product-review">
-                                <span class="review-fill"><i class="fa fa-star"></i></span>
-                                <span class="review-fill"><i class="fa fa-star"></i></span>
-                                <span class="review-fill"><i class="fa fa-star"></i></span>
-                                <span class="review-fill"><i class="fa fa-star"></i></span>
-                                <span class="review-fill"><i class="fa fa-star"></i></span>
+                        <div class="price">
+                            @{
+                                var priceValue = String.Format("{0:0.##}", Model.Price) + " руб.";
+
+                                if (Model.DiscountValue != null)
+                                {
+                                    <del>@priceValue</del>
+                                    var price = Model.Price * (100 - Model.DiscountValue.Value) / 100;
+                                    var discountPriceValue = String.Format("{0:0.##}", price) + "руб.";
+                                    @discountPriceValue
+                                }
+                                else
+                                {
+                                    @priceValue
+                                }
+                            }
+                        </div>
+
+                        <div class="table_desc">
+                            <div class="table_page table-responsive">
+                                <table>
+                                    <tbody>
+                                        @{
+                                            if (Model.Width != null && Model.Height != null && Model.Length != null)
+                                            {
+                                                var states = $"{Model.Width} x {Model.Height} x {Model.Length} см";
+                                                <tr>
+                                                    <td class="product_name">Размеры ШхВхД:</td>
+                                                    <td class="product-price">@states</td>
+                                                </tr>
+                                            }
+
+                                            if (Model.Upholstery != null)
+                                            {
+                                                <tr>
+                                                    <td class="product_name">Обивка:</td>
+                                                    <td class="product-price">@Model.Upholstery</td>
+                                                </tr>
+                                            }
+
+                                            if (Model.Filler != null)
+                                            {
+                                                <tr>
+                                                    <td class="product_name">Наполнитель:</td>
+                                                    <td class="product-price">@Model.Filler</td>
+                                                </tr>
+                                            }
+
+                                            if (Model.BodyMaterial != null)
+                                            {
+                                                <tr>
+                                                    <td class="product_name">Материал корпуса:</td>
+                                                    <td class="product-price">@Model.BodyMaterial</td>
+                                                </tr>
+                                            }
+
+                                            if (Model.FacadeMaterial != null)
+                                            {
+                                                <tr>
+                                                    <td class="product_name">Материал фасада:</td>
+                                                    <td class="product-price">@Model.FacadeMaterial</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="price">@Model.Price</div>
-                        <p>@Model.Description</p>
                     </div> <!-- End  Product Details Text Area-->
-                    <!-- Start Product Variable Area -->
-                    <div class="product-details-variable">
-                        <!-- Product Variable Single Item -->
-                        <div class="d-flex align-items-center">
-                            <div class="product-add-to-cart-btn">
-                                <a href="#" data-toggle="modal" data-target="#modalAddcart">Заказать</a>
-                            </div>
-                        </div>
-                    </div> <!-- End Product Variable Area -->
+                </div>
+            </div>
+            <div class="product-details-variable">
+                <div class="d-flex align-items-center">
+                    <div class="product-add-to-cart-btn" style="margin: 0 auto; display: table;">
+                        <a href="#" data-toggle="modal" data-target="#modalAddcart">Заказать</a>
+                    </div>
                 </div>
             </div>
         </div>

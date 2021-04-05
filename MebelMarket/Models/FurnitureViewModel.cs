@@ -46,7 +46,7 @@ namespace MebelMarket.Models
         [Display(Name = "Материал фасада")]
         public string FacadeMaterial { get; set; }
 
-        [Display(Name = "Размер скидки")]
+        [Display(Name = "Размер скидки в % (целое число)")]
         public int? DiscountValue { get; set; }
     }
 }
