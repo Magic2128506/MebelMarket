@@ -282,8 +282,8 @@ namespace MebelMarket.Controllers
             _FurnitureData.CreateNewOrder(order);
             _FurnitureData.SaveChanges();
 
-            var info = order.Description.Split(',');
-            var message = $"ID - {info[0]}, Название - {info[1]}, Цена - {info[2]}";
+            var info = order.Description.Split(';');
+            var message = $"ID - {info[0]}, Название - {info[1]}, Цена без скидки - {info[2]}, Скидка - {info[3]}%";
 
             _notify.SendEmail("timur_nasibullin@mail.ru", $"Поступил новый заказ от клиента. Имя: {order.Name}. Телефон: {order.Phone}. Товар: {message}");
 
