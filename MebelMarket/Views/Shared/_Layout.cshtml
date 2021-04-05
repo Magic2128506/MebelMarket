@@ -86,6 +86,9 @@
                                         <a asp-controller="Home" asp-action="Delivery">Доставка</a>
                                     </li>
                                     <li>
+                                        <a asp-controller="Home" asp-action="Payment">Оплата</a>
+                                    </li>
+                                    <li>
                                         <a asp-controller="Home" asp-action="AboutUs">О Нас</a>
                                     </li>
                                     <li>
@@ -167,6 +170,7 @@
                         </li>
                         <partial name="Partial/_CategoriesMobile" model="@catalog.GetAllTypes().ToView()" />
                         <li><a asp-controller="Home" asp-action="Delivery">Доставка</a></li>
+                        <li><a asp-controller="Home" asp-action="Payment">Оплата</a></li>
                         <li><a asp-controller="Home" asp-action="AboutUs">О нас</a></li>
                         <li><a asp-controller="Home" asp-action="Contacts">Контакты</a></li>
                     </ul>
@@ -217,6 +221,7 @@
                             <div class="footer-menu">
                                 <ul class="footer-menu-nav">
                                     <li><a asp-controller="Home" asp-action="Delivery">Доставка</a></li>
+                                    <li><a asp-controller="Home" asp-action="Payment">Оплата</a></li>
                                     <li><a asp-controller="Home" asp-action="AboutUs">О нас</a></li>
                                     <li><a asp-controller="Home" asp-action="Contacts">Контакты</a></li>
                                 </ul>

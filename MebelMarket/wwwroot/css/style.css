@@ -15826,7 +15826,7 @@ Pages - Product Details
 .product-details-text .title {
   text-transform: capitalize;
   line-height: 20px;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 600;
   margin-bottom: 22px;
 }
@@ -15835,7 +15835,7 @@ Pages - Product Details
 }
 .product-details-text .price {
   display: block;
-  font-size: 20px;
+  font-size: 24px;
   color: #ea1c26;
   margin: 10px 0;
 }
@@ -16057,7 +16057,6 @@ Pages - Product Details
   display: block;
   margin-bottom: 5px;
   font-weight: 500;
-  text-transform: capitalize;
 }
 
 .product-add-to-cart-btn a {

@@ -41,13 +41,13 @@
                                                     <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="Index" asp-route-id="@product.Id">@product.Name</a></h6>
                                                     <span class="product-default-price">
                                                         @{
-                                                            var priceValue = String.Format("{0:0.##}", product.Price);
+                                                            var priceValue = String.Format("{0:0.##}", product.Price) + " руб.";
 
                                                             if (product.DiscountValue != null)
                                                             {
                                                                 <del class="product-default-price-off">@priceValue</del>
                                                                 var price = product.Price * (100 - product.DiscountValue.Value) / 100;
-                                                                var discountPriceValue = String.Format("{0:0.##}", price);
+                                                                var discountPriceValue = String.Format("{0:0.##}", price) + " руб.";
                                                                 @discountPriceValue
                                                             }
                                                             else
