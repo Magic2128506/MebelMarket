@@ -14853,7 +14853,7 @@ table {
   border-right: 1px solid #eee;
   font-weight: 500;
   font-size: 14px;
-  text-align: center;
+  text-align: left;
   min-width: 150px;
 }
 
@@ -15094,7 +15094,6 @@ Components - Tab Style
 .product-tab-btn > li > .nav-link.active,
 .product-details-content-tab-btn > li > .nav-link:hover,
 .product-details-content-tab-btn > li > .nav-link.active {
-  color: #ea1c26 !important;
   transition: all 0.3s ease 0s;
 }
 .sort-tab-btn > li > .nav-link:hover img, .sort-tab-btn > li > .nav-link.active img,
@@ -15128,7 +15127,6 @@ Components - Tab Style
   }
 }
 .product-details-content-tab-btn > li > .nav-link:hover h5, .product-details-content-tab-btn > li > .nav-link:hover .h5, .product-details-content-tab-btn > li > .nav-link.active h5, .product-details-content-tab-btn > li > .nav-link.active .h5 {
-  color: #ea1c26 !important;
   transition: all 0.3s ease 0s;
 }
 .product-details-content-tab-btn > li > .nav-link:hover h5 img, .product-details-content-tab-btn > li > .nav-link:hover .h5 img, .product-details-content-tab-btn > li > .nav-link.active h5 img, .product-details-content-tab-btn > li > .nav-link.active .h5 img {
