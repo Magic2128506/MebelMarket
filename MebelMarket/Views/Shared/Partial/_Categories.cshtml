@@ -2,30 +2,16 @@
 @using MebelMarket.Infrastructure.Interfaces
 @inject IFurnitureData catalog;
 
-<li class="has-dropdown has-megaitem">
-    <a asp-controller="Furniture" asp-action="Grid" asp-route-id="0">Каталог товаров <i class="fa fa-angle-down"></i></a>
-    <!-- Mega Menu -->
-    <div class="mega-menu">
-        <ul class="mega-menu-inner">
-            @{
-                for (int i = 1; i < @catalog.GetAllCategories().Count() + 1; i++)
+@{
+    for (int i = 1; i < @catalog.GetAllCategories().Count() + 1; i++)
+    {<li class="has-dropdown" style="width: 10.4%;">
+         <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="@i" class="mega-menu-item-title">@catalog.GetAllCategories().FirstOrDefault(x => x.Id == i).Name</a>
+            <ul class="sub-menu">
+                @foreach (var product in Model.Where(x => x.Category == i))
                 {
-                    <li class="mega-menu-item">
-                        <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="@i" class="mega-menu-item-title">@catalog.GetAllCategories().FirstOrDefault(x => x.Id == i).Name</a>
-                        <ul class="mega-menu-sub">
-                            @foreach (var product in Model.Where(x => x.Category == i))
-                            {
-                                <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
-                            }
-                        </ul>
-                    </li>
+                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
                 }
-            }
-        </ul>
-        <div class="menu-banner">
-            <a href="" class="menu-banner-link">
-                <img class="menu-banner-img opacity-50" src="~/images/banner/menu-banner.jpg" alt="">
-            </a>
-        </div>
-    </div>
-</li>
+            </ul>
+        </li>
+    }
+}

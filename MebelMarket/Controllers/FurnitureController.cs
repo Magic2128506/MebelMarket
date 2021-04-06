@@ -103,7 +103,7 @@ namespace MebelMarket.Controllers
 
         public IActionResult ViewPageByCategory([FromQuery(Name = "page")] string id, [FromQuery(Name = "categoryId")] string catId)
         {
-            int pageId = int.Parse(id);
+            int pageId = id == null ? 1 : int.Parse(id);
             int categoryId = int.Parse(catId);
             var furnitures = _FurnitureData.GetByCategory(categoryId);
             int start = 21 * (pageId - 1);
@@ -293,6 +293,11 @@ namespace MebelMarket.Controllers
         }
 
         public IActionResult OrderConfirm(FurnitureViewModel furnitureViewModel)
+        {
+            return View();
+        }
+
+        public IActionResult Categories()
         {
             return View();
         }

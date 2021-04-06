@@ -31,12 +31,12 @@
 
                                     if (ViewBag.usedFilter == "Grid")
                                     {
-                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage">Предыдущая страница</a></li>
+                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage">Предыдущая</a></li>
                                         <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage">@beforePage</a></li>
                                     }
                                     else
                                     {
-                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage" asp-route-categoryId="@ViewBag.usedCategory">Предыдущая страница</a></li>
+                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage" asp-route-categoryId="@ViewBag.usedCategory">Предыдущая</a></li>
                                         <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage" asp-route-categoryId="@ViewBag.usedCategory">@beforePage</a></li>
                                     }
                                 }
