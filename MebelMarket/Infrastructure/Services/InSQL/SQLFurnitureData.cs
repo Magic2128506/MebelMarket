@@ -116,5 +116,28 @@ namespace MebelMarket.Infrastructure.Services.InSQL
 
             _db.Add(order);
         }
+
+        public bool IsColorExists(int furnitureId, int colorId)
+        {
+            return colorId switch
+            {
+                1 => GetById(furnitureId).Color1,
+                2 => GetById(furnitureId).Color2,
+                3 => GetById(furnitureId).Color3,
+                4 => GetById(furnitureId).Color4,
+                5 => GetById(furnitureId).Color5,
+                6 => GetById(furnitureId).Color6,
+                7 => GetById(furnitureId).Color7,
+                8 => GetById(furnitureId).Color8,
+                9 => GetById(furnitureId).Color9,
+                10 => GetById(furnitureId).Color10,
+                11 => GetById(furnitureId).Color11,
+                12 => GetById(furnitureId).Color12,
+                13 => GetById(furnitureId).Color13,
+                14 => GetById(furnitureId).Color14,
+                15 => GetById(furnitureId).Color15,
+                _ => false,
+            };
+        }
     }
 }

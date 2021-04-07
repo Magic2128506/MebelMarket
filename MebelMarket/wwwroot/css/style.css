@@ -18043,3 +18043,11 @@ Layout - Footer
 .opacity-50 {
   opacity: 0.5;
 }
+
+.scale {
+    transition: 1s;
+}
+
+.scale:hover {
+    transform: scale(4);
+}

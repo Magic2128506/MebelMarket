@@ -1,10 +1,66 @@
 ﻿@model FurnitureViewModel
 @using System.IO
+@using MebelMarket.Infrastructure.Interfaces
+
 @{
     ViewData["Title"] = $"{Model.Name} - МебельМаркет";
 }
 
-<!-- Start Product Details Section -->
+<style>
+    #container {
+    text-align:left;
+}
+.wrap{
+    display:inline-block;
+    position:relative;
+    cursor:pointer;
+}
+    .wrap p {
+        position: absolute;
+        opacity: 0;
+        top: 50%;
+        left: -18%;
+        padding: 5px;
+        text-align: center;
+        width: 113%;
+        font-size: 20px;
+        line-height: 20px;
+        margin-top: -10px;
+        z-index: 3;
+        transition: 1s;
+    }
+
+.wrap img {
+    display:block;
+    width:36px;
+    height:36px;
+    margin:5px;
+    -webkit-transition:opacity 0.26s ease-out;
+    -moz-transition:opacity 0.26s ease-out;
+    -ms-transition:opacity 0.26s ease-out;
+    -o-transition:opacity 0.26s ease-out;
+    transition:opacity 0.26s ease-out;
+    transition:1s;
+}
+#container:hover img {
+    opacity:0.5;
+}
+#container:hover .wrap:hover img {
+    opacity:1;
+    -webkit-transform: scale(5);
+    -moz-transform: scale(5);
+    -ms-transform: scale(5);
+    -o-transform: scale(5);
+    transform: scale(5);
+    z-index:2;
+    position:relative;
+    transition:500ms;
+}
+.wrap:hover p {
+    opacity :1;
+}
+
+</style>
 <div class="product-details-section" style="margin-top: 35px;">
     <div class="container">
         <div class="row">
@@ -68,7 +124,6 @@
             </div>
             <div class="col-md-6">
                 <div class="product-details-content-area">
-                    <!-- Start  Product Details Text Area-->
                     <div class="product-details-text">
                         <h4 class="title">@Model.Name</h4>
                         <div class="price">
@@ -140,23 +195,141 @@
                             </div>
                         </div>
 
-                        <div class="variable-single-item">
-                            <br/>
-                            <span>Доступные цвета</span>
-                            <ul class="footer-social" style="margin: auto">
-                                <li>
-                                    <img src="/images/colors/1.jpg" alt="">
-                                </li>
-                                <li>
-                                    <img src="/images/colors/2.jpg" alt="">
-                                </li>
-                                <li>
-                                    <img src="/images/colors/3.jpg" alt="">
-                                </li>
-                            </ul>
-                        </div>
+                        @{
+                            if (Model.Color1 || Model.Color3 || Model.Color4 || Model.Color5 || Model.Color6 ||
+                                Model.Color7 || Model.Color8 || Model.Color9)
+                            {
+                                <div class="variable-single-item">
+                                    <br />
+                                    <span>Доступные цвета</span>
+                                    <ul class="footer-social" style="margin: auto">
+                                        <div id="container">
+                                            @if (Model.Color1)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/1.jpg" alt="Шимо темный/светлый" />
+                                                    <p>Шимо темный/светлый</p>
+                                                </div>
+                                            }
 
-                    </div> <!-- End  Product Details Text Area-->
+                                            @if (Model.Color2)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/2.jpg" alt="Венге/дуб" />
+                                                    <p>Венге/дуб</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color3)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/3.jpg" alt="Слива/крем" />
+                                                    <p>Слива/крем</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color4)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/4.jpg" alt="Дуб сонома" />
+                                                    <p>Дуб сонома</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color5)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/5.jpg" alt="Орех" />
+                                                    <p>Орех</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color6)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/6.jpg" alt="Вишня" />
+                                                    <p>Вишня</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color7)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/7.jpg" alt="Бук" />
+                                                    <p>Бук</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color8)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/8.jpg" alt="Дуб" />
+                                                    <p>Дуб</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color9)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/9.jpg" alt="Шимо светлый" />
+                                                    <p>Шимо светлый</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color10)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/10.jpg" alt="Шимо темный" />
+                                                    <p>Шимо темный</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color11)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/11.jpg" alt="Выбеленное дерево" />
+                                                    <p>Выбеленное дерево</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color12)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/12.jpg" alt="Дуб санома/белый" />
+                                                    <p>Дуб санома/белый</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color13)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/13.jpg" alt="Дуб/розовый" />
+                                                    <p>Дуб/розовый</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color14)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/14.jpg" alt="Дуб/лайм" />
+                                                    <p>Дуб/лайм</p>
+                                                </div>
+                                            }
+
+                                            @if (Model.Color15)
+                                            {
+                                                <div class="wrap">
+                                                    <img src="/images/colors/15.jpg" alt="Дуб/синий" />
+                                                    <p>Дуб/синий</p>
+                                                </div>
+                                            }
+                                        </div>
+                                    </ul>
+                                </div>
+                            }
+                        }
+
+                    </div>
                 </div>
             </div>
             <div class="product-details-variable">
@@ -168,39 +341,34 @@
             </div>
         </div>
     </div>
-</div> <!-- End Product Details Section -->
-<!-- Start Product Content Tab Section -->
+</div>
 <div class="product-details-content-tab-section section-inner-bg section-top-gap-100">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="product-details-content-tab-wrapper">
-
-                    <!-- Start Product Details Tab Button -->
                     <ul class="nav tablist product-details-content-tab-btn d-flex justify-content-center">
                         <li>
                             <a class="nav-link active" data-toggle="tab" href="#description">
                                 <h5>Описание</h5>
                             </a>
                         </li>
-                    </ul> <!-- End Product Details Tab Button -->
-                    <!-- Start Product Details Tab Content -->
+                    </ul>
                     <div class="product-details-content-tab">
                         <div class="tab-content">
-                            <!-- Start Product Details Tab Content Singel -->
                             <div class="tab-pane active show" id="description">
                                 <div class="single-tab-content-item">
                                     <p>@Model.Description</p>
                                 </div>
-                            </div> <!-- End Product Details Tab Content Singel -->
+                            </div>
                         </div>
-                    </div> <!-- End Product Details Tab Content -->
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
-</div> <!-- End Product Content Tab Section -->
+</div>
 
 @{
     var info = $"{Model.Id.ToString()};{Model.Name};{Model.Price};{Model.DiscountValue.GetValueOrDefault()}";

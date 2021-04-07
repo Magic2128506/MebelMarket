@@ -48,5 +48,50 @@ namespace MebelMarket.Models
 
         [Display(Name = "Размер скидки в % (целое число)")]
         public int? DiscountValue { get; set; }
+
+        [Display(Name = "Шимо темный/светлый")]
+        public bool Color1 { get; set; }
+
+        [Display(Name = "Венге/дуб")]
+        public bool Color2 { get; set; }
+
+        [Display(Name = "Слива/крем")]
+        public bool Color3 { get; set; }
+
+        [Display(Name = "Дуб сонома")]
+        public bool Color4 { get; set; }
+
+        [Display(Name = "Орех")]
+        public bool Color5 { get; set; }
+
+        [Display(Name = "Вишня")]
+        public bool Color6 { get; set; }
+
+        [Display(Name = "Бук")]
+        public bool Color7 { get; set; }
+
+        [Display(Name = "Дуб")]
+        public bool Color8 { get; set; }
+
+        [Display(Name = "Шимо светлый")]
+        public bool Color9 { get; set; }
+
+        [Display(Name = "Шимо темный")]
+        public bool Color10 { get; set; }
+
+        [Display(Name = "Выбеленное дерево")]
+        public bool Color11 { get; set; }
+
+        [Display(Name = "Дуб санома/белый")]
+        public bool Color12 { get; set; }
+
+        [Display(Name = "Дуб/розовый")]
+        public bool Color13 { get; set; }
+
+        [Display(Name = "Дуб/лайм")]
+        public bool Color14 { get; set; }
+
+        [Display(Name = "Дуб/синий")]
+        public bool Color15 { get; set; }
     }
 }

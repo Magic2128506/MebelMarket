@@ -4,14 +4,16 @@ using MebelMarket.SqlDataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MebelMarket.Migrations
 {
     [DbContext(typeof(MebelMarketContext))]
-    partial class MebelMarketContextModelSnapshot : ModelSnapshot
+    [Migration("20210407121223_FurnitureColors2")]
+    partial class FurnitureColors2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,49 +31,49 @@ namespace MebelMarket.Migrations
                     b.Property<string>("BodyMaterial")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Color1")
+                    b.Property<bool?>("Color1")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color10")
+                    b.Property<bool?>("Color10")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color11")
+                    b.Property<bool?>("Color11")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color12")
+                    b.Property<bool?>("Color12")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color13")
+                    b.Property<bool?>("Color13")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color14")
+                    b.Property<bool?>("Color14")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color15")
+                    b.Property<bool?>("Color15")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color2")
+                    b.Property<bool?>("Color2")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color3")
+                    b.Property<bool?>("Color3")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color4")
+                    b.Property<bool?>("Color4")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color5")
+                    b.Property<bool?>("Color5")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color6")
+                    b.Property<bool?>("Color6")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color7")
+                    b.Property<bool?>("Color7")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color8")
+                    b.Property<bool?>("Color8")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Color9")
+                    b.Property<bool?>("Color9")
                         .HasColumnType("bit");
 
                     b.Property<string>("Description")

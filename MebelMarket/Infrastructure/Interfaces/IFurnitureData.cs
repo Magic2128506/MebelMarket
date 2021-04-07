@@ -22,5 +22,6 @@ namespace MebelMarket.Infrastructure.Interfaces
         IEnumerable<Furniture> GetForHomeFurnitures();
         public IEnumerable<FurnitureCategory> GetAllCategories();
         public void CreateNewOrder(Order order);
+        public bool IsColorExists(int furnitureId, int colorId);
     }
 }

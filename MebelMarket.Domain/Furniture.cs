@@ -32,5 +32,20 @@ namespace MebelMarket.Domain
         public string BodyMaterial { get; set; }
         public string FacadeMaterial { get; set; }
         public int? DiscountValue { get; set; }
+        public bool Color1 { get; set; }
+        public bool Color2 { get; set; }
+        public bool Color3 { get; set; }
+        public bool Color4 { get; set; }
+        public bool Color5 { get; set; }
+        public bool Color6 { get; set; }
+        public bool Color7 { get; set; }
+        public bool Color8 { get; set; }
+        public bool Color9 { get; set; }
+        public bool Color10 { get; set; }
+        public bool Color11 { get; set; }
+        public bool Color12 { get; set; }
+        public bool Color13 { get; set; }
+        public bool Color14 { get; set; }
+        public bool Color15 { get; set; }
     }
 }
