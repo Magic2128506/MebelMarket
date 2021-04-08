@@ -6,7 +6,7 @@
 <br />
 <div class="shop-section">
     <div class="container">
-        <div class="row flex-column-reverse flex-lg-row">
+        <div class="col-lg-12">
             <div class="shop-sort-section">
                 <div class="container">
                     <div class="row">
@@ -94,17 +94,17 @@
 
                                     if (ViewBag.usedFilter == "Grid")
                                     {
-                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage">Предыдущая</a></li>
+                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage">Назад</a></li>
                                         <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage">@beforePage</a></li>
                                     }
                                     else if (ViewBag.usedFilter == "FindAny")
                                     {
-                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-search="@ViewBag.usedFilterString" asp-route-page="@beforePage">Предыдущая</a></li>
+                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-search="@ViewBag.usedFilterString" asp-route-page="@beforePage">Назад</a></li>
                                         <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-search="@ViewBag.usedFilterString" asp-route-page="@beforePage">@beforePage</a></li>
                                     }
                                     else
                                     {
-                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage" asp-route-categoryId="@ViewBag.usedCategory">Предыдущая</a></li>
+                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage" asp-route-categoryId="@ViewBag.usedCategory">Назад</a></li>
                                         <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@beforePage" asp-route-categoryId="@ViewBag.usedCategory">@beforePage</a></li>
                                     }
                                 }
@@ -157,15 +157,15 @@
 
                                     if (ViewBag.usedFilter == "Grid")
                                     {
-                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@nextPage">Следующая</a></li>
+                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@nextPage">Вперед</a></li>
                                     }
                                     else if (ViewBag.usedFilter == "FindAny")
                                     {
-                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@nextPage" asp-route-search="@ViewBag.usedFilterString">Следующая</a></li>
+                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@nextPage" asp-route-search="@ViewBag.usedFilterString">Вперед</a></li>
                                     }
                                     else
                                     {
-                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@nextPage" asp-route-categoryId="@ViewBag.usedCategory">Следующая</a></li>
+                                        <li><a asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="@nextPage" asp-route-categoryId="@ViewBag.usedCategory">Вперед</a></li>
                                     }
                                 }
 

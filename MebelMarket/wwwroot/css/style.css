@@ -7582,7 +7582,7 @@ progress {
 }
 
 .text-warning {
-  color: #FFC107 !important;
+  color: #ff0707 !important;
 }
 
 .text-danger {
@@ -14459,7 +14459,7 @@ Components - Form
   border-color: #ea1c26;
 }
 .default-form-box textarea {
-  height: 200px;
+  height: 100px;
   padding: 20px;
 }
 

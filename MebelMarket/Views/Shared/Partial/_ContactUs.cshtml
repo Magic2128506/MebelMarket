@@ -1,0 +1,38 @@
+﻿@model ContactsUsViewModel
+
+<form asp-action="SendEmail" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="default-form-box mb-1">
+                <label asp-for="Name">Ваше имя</label>
+                <input asp-for="Name" required>
+                <span asp-validation-for="Name" class="text-warning"></span>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="default-form-box mb-1">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" required>
+                <span asp-validation-for="Email" class="text-warning"></span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="default-form-box mb-1">
+                <label asp-for="Theme">Тема</label>
+                <input asp-for="Theme" required>
+                <span asp-validation-for="Theme" class="text-warning"></span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="default-form-box mb-1">
+                <label asp-for="Message">Ваше сообщение</label>
+                <textarea asp-for="Message" cols="30" rows="10" required></textarea>
+                <span asp-validation-for="Message" class="text-warning"></span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <button class="contact-submit-btn" type="submit">Отправить</button>
+        </div>
+    </div>
+</form>

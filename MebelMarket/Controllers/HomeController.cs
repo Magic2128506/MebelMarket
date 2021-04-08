@@ -1,4 +1,5 @@
 ﻿using MebelMarket.Infrastructure.Interfaces;
+using MebelMarket.Infrastructure.Services.Notify;
 using MebelMarket.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -12,12 +13,14 @@ namespace MebelMarket.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IFurnitureData _FurnitureData;
         private readonly IWebHostEnvironment _environment;
+        private readonly Notify _notify;
 
-        public HomeController(ILogger<HomeController> logger, IFurnitureData FurnitureData, IWebHostEnvironment environment)
+        public HomeController(ILogger<HomeController> logger, IFurnitureData FurnitureData, IWebHostEnvironment environment, Notify notify)
         {
             _logger = logger;
             _FurnitureData = FurnitureData;
             _environment = environment;
+            _notify = notify;
         }
 
         public IActionResult Index()
@@ -33,8 +36,10 @@ namespace MebelMarket.Controllers
             return View();
         }
 
-        public IActionResult Contacts()
+        public IActionResult Contacts(string success = null)
         {
+            ViewBag.Success = success;
+
             return View();
         }
 
@@ -58,6 +63,18 @@ namespace MebelMarket.Controllers
         {
             string url = $"/Furniture/Search?Search={search}";
             return Redirect(url);
+        }
+
+        public IActionResult SendEmail(ContactsUsViewModel cvm)
+        {
+            if (!ModelState.IsValid)
+                return View(nameof(Contacts));
+
+            var message = $"Имя: {cvm.Name}\n\r Тема: {cvm.Theme}\n\r Email: {cvm.Email}\n\r Сообщение: {cvm.Message}";
+
+            _notify.SendEmail("timur_nasibullin@mail.ru", $"Поступил новый вопрос от клиента. \n\r {message}");
+
+            return Redirect("/Home/Contacts?success=1");
         }
     }
 }
