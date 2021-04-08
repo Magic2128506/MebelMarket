@@ -125,24 +125,34 @@
             <div class="col-md-6">
                 <div class="product-details-content-area">
                     <div class="product-details-text">
-                        <h4 class="title">@Model.Name</h4>
-                        <div class="price">
-                            @{
-                                var priceValue = String.Format("{0:0.##}", Model.Price) + " руб.";
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="title">@Model.Name</h4>
+                                <div class="price">
+                                    @{
+                                        var priceValue = String.Format("{0:0.##}", Model.Price) + " руб.";
 
-                                if (Model.DiscountValue != null)
-                                {
-                                    <del>@priceValue</del>
-                                    var price = Model.Price * (100 - Model.DiscountValue.Value) / 100;
-                                    var discountPriceValue = String.Format("{0:0.##}", price) + "руб.";
-                                    @discountPriceValue
-                                }
-                                else
-                                {
-                                    @priceValue
-                                }
-                            }
+                                        if (Model.DiscountValue != null)
+                                        {
+                                            <del>@priceValue</del>
+                                            var price = Model.Price * (100 - Model.DiscountValue.Value) / 100;
+                                            var discountPriceValue = String.Format("{0:0.##}", price) + "руб.";
+                                            @discountPriceValue
+                                        }
+                                        else
+                                        {
+                                            @priceValue
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product-add-to-cart-btn">
+                                    <a href="#" data-toggle="modal" data-target="#modalAddcart">Заказать</a>
+                                </div>
+                            </div>
                         </div>
+
 
                         <div class="table_desc">
                             <div class="table_page table-responsive">
@@ -196,8 +206,10 @@
                         </div>
 
                         @{
-                            if (Model.Color1 || Model.Color3 || Model.Color4 || Model.Color5 || Model.Color6 ||
-                                Model.Color7 || Model.Color8 || Model.Color9)
+                            if (Model.Color1 || Model.Color2 || Model.Color3 || Model.Color4 || Model.Color5 || Model.Color6 ||
+                                Model.Color7 || Model.Color8 || Model.Color9 ||
+                                Model.Color10 || Model.Color11 || Model.Color12 ||
+                                Model.Color13 || Model.Color14 || Model.Color15)
                             {
                                 <div class="variable-single-item">
                                     <br />
@@ -223,8 +235,8 @@
                                             @if (Model.Color3)
                                             {
                                                 <div class="wrap">
-                                                    <img src="/images/colors/3.jpg" alt="Слива/крем" />
-                                                    <p>Слива/крем</p>
+                                                    <img src="/images/colors/2.jpg" alt="Венге" />
+                                                    <p>Венге</p>
                                                 </div>
                                             }
 
@@ -295,7 +307,7 @@
                                             @if (Model.Color12)
                                             {
                                                 <div class="wrap">
-                                                    <img src="/images/colors/12.jpg" alt="Дуб санома/белый" />
+                                                    <img src="/images/colors/12.jpg" alt="Дуб сонома/белый" />
                                                     <p>Дуб санома/белый</p>
                                                 </div>
                                             }
@@ -329,13 +341,6 @@
                             }
                         }
 
-                    </div>
-                </div>
-            </div>
-            <div class="product-details-variable">
-                <div class="d-flex align-items-center">
-                    <div class="product-add-to-cart-btn" style="margin: 0 auto; display: table;">
-                        <a href="#" data-toggle="modal" data-target="#modalAddcart">Заказать</a>
                     </div>
                 </div>
             </div>

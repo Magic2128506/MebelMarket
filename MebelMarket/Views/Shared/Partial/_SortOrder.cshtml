@@ -1,0 +1,32 @@
+﻿<fieldset>
+    <select name="sortOrder" onchange="this.form.submit()">
+        @if (ViewBag.SordOrder is null || ViewBag.SordOrder == "byNovelty")
+        {
+            <option selected="selected" value="byNovelty">Показывать сначала новые</option>
+        }
+        else
+        {
+            <option value="byNovelty">Показывать сначала новые</option>
+        }
+
+        @if (ViewBag.SordOrder == "byPrice")
+        {
+            <option selected="selected" value="byPrice">Цена по возрастанию</option>
+        }
+        else
+        {
+            <option value="byPrice">Цена по возрастанию</option>
+        }
+
+        @if (ViewBag.SordOrder == "byPriceDesc")
+        {
+            <option selected="selected" value="byPriceDesc">Цена по убыванию</option>
+
+        }
+        else
+        {
+            <option value="byPriceDesc">Цена по убыванию</option>
+
+        }
+    </select>
+</fieldset>

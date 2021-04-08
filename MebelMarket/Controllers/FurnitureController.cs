@@ -46,7 +46,7 @@ namespace MebelMarket.Controllers
             return View(furniture.ToView());
         }
 
-        public IActionResult Grid(int? id, [FromQuery(Name = "page")] string pageId)
+        public IActionResult Grid(int? id, [FromQuery(Name = "page")] string pageId, [FromForm(Name = "sortOrder")] string sortOrder = null)
         {
 
             int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
@@ -56,16 +56,26 @@ namespace MebelMarket.Controllers
                 ? _FurnitureData.GetLastFurnitures()
                 : _FurnitureData.GetByType(id.Value);
 
-            int start = 21 * (pageIdValue - 1);
-            int lastCount = furnitures.Count() - start;
-            int count = lastCount < 21 ? lastCount : 21;
+            int allCount = furnitures.Count();
+            int start = 15 * (pageIdValue - 1);
+            int lastCount = allCount - start;
+            int count = lastCount < 15 ? lastCount : 15;
 
-            decimal helper = (decimal)furnitures.Count() / (decimal)21;
+            decimal helper = (decimal)allCount / (decimal)15;
             var pagesCount = Math.Ceiling(helper);
 
             if (count < 1)
             {
                 return View(nameof(Grid));
+            }
+
+            if (sortOrder == "byPrice")
+            {
+                furnitures = furnitures.OrderBy(x => x.Price);
+            }
+            else if (sortOrder == "byPriceDesc")
+            {
+                furnitures = furnitures.OrderByDescending(x => x.Price);
             }
 
             var returnList = furnitures.ToList().GetRange(start, count);
@@ -74,6 +84,8 @@ namespace MebelMarket.Controllers
             ViewBag.usedPage = pageIdValue;
             ViewBag.usedCategory = categoryId;
             ViewBag.pagesCount = pagesCount;
+            ViewBag.allCount = allCount;
+            ViewBag.SordOrder = sortOrder;
 
             return View(returnList.ToView());
         }
@@ -83,11 +95,45 @@ namespace MebelMarket.Controllers
             return FindAny(search);
         }
 
-        public IActionResult FindAny(string search)
+        public IActionResult FindAny(string search, [FromQuery(Name = "page")] string pageId = null, [FromForm(Name = "sortOrder")] string sortOrder = null)
         {
+            int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
+
             var furnitures = _FurnitureData.FindAnyByName(search);
 
-            return View(nameof(Grid), furnitures.ToView());
+            int allCount = furnitures.Count();
+            int start = 15 * (pageIdValue - 1);
+            int lastCount = allCount - start;
+            int count = lastCount < 15 ? lastCount : 15;
+
+            if (count < 1)
+            {
+                return View(nameof(Grid));
+            }
+
+            if (sortOrder == "byPrice")
+            {
+                furnitures = furnitures.OrderBy(x => x.Price);
+            }
+            else if (sortOrder == "byPriceDesc")
+            {
+                furnitures = furnitures.OrderByDescending(x => x.Price);
+            }
+
+            decimal helper = (decimal)allCount / (decimal)15;
+            var pagesCount = Math.Ceiling(helper);
+
+            var returnList = furnitures.ToList().GetRange(start, count);
+
+            ViewBag.usedFilter = "FindAny";
+            ViewBag.usedFilterString = search;
+            ViewBag.usedPage = pageIdValue;
+            ViewBag.usedCategory = 0;
+            ViewBag.pagesCount = pagesCount;
+            ViewBag.allCount = allCount;
+            ViewBag.SordOrder = sortOrder;
+
+            return View(nameof(Grid), returnList.ToView());
         }
         public IActionResult GridByCategory(int id)
         {
@@ -101,21 +147,31 @@ namespace MebelMarket.Controllers
             return Redirect(url);
         }
 
-        public IActionResult ViewPageByCategory([FromQuery(Name = "page")] string id, [FromQuery(Name = "categoryId")] string catId)
+        public IActionResult ViewPageByCategory([FromQuery(Name = "page")] string id, [FromQuery(Name = "categoryId")] string catId, [FromForm(Name = "sortOrder")] string sortOrder = null)
         {
             int pageId = id == null ? 1 : int.Parse(id);
             int categoryId = int.Parse(catId);
             var furnitures = _FurnitureData.GetByCategory(categoryId);
-            int start = 21 * (pageId - 1);
-            int lastCount = furnitures.Count() - start;
-            int count = lastCount < 21 ? lastCount : 21;
+            int start = 15 * (pageId - 1);
+            int allCount = furnitures.Count();
+            int lastCount = allCount - start;
+            int count = lastCount < 15 ? lastCount : 15;
 
-            decimal helper = (decimal)furnitures.Count() / (decimal)21;
+            decimal helper = (decimal)allCount / (decimal)15;
             var pagesCount = Math.Ceiling(helper);
 
             if (count < 1)
             {
                 return View(nameof(Grid));
+            }
+
+            if (sortOrder == "byPrice")
+            {
+                furnitures = furnitures.OrderBy(x => x.Price);
+            }
+            else if (sortOrder == "byPriceDesc")
+            {
+                furnitures = furnitures.OrderByDescending(x => x.Price);
             }
 
             var returnList = furnitures.ToList().GetRange(start, count);
@@ -124,6 +180,8 @@ namespace MebelMarket.Controllers
             ViewBag.usedPage = pageId;
             ViewBag.usedCategory = catId;
             ViewBag.pagesCount = pagesCount;
+            ViewBag.allCount = allCount;
+            ViewBag.SordOrder = sortOrder;
 
             return View($"Grid", returnList.ToView());
         }
@@ -151,12 +209,12 @@ namespace MebelMarket.Controllers
             int categoryId = 0;
 
             var furnitures = _FurnitureData.GetForOfficeFurnitures();
+            int allCount = furnitures.Count();
+            int start = 15 * (pageIdValue - 1);
+            int lastCount = allCount - start;
+            int count = lastCount < 15 ? lastCount : 15;
 
-            int start = 21 * (pageIdValue - 1);
-            int lastCount = furnitures.Count() - start;
-            int count = lastCount < 21 ? lastCount : 21;
-
-            decimal helper = (decimal)furnitures.Count() / (decimal)21;
+            decimal helper = (decimal)allCount / (decimal)15;
             var pagesCount = Math.Ceiling(helper);
 
             if (count < 1)
@@ -170,6 +228,7 @@ namespace MebelMarket.Controllers
             ViewBag.usedPage = pageIdValue;
             ViewBag.usedCategory = categoryId;
             ViewBag.pagesCount = pagesCount;
+            ViewBag.allCount = allCount;
 
             return View(nameof(Grid), returnList.ToView());
         }
@@ -181,11 +240,12 @@ namespace MebelMarket.Controllers
 
             var furnitures = _FurnitureData.GetForHomeFurnitures();
 
-            int start = 21 * (pageIdValue - 1);
-            int lastCount = furnitures.Count() - start;
-            int count = lastCount < 21 ? lastCount : 21;
+            int start = 15 * (pageIdValue - 1);
+            int allCount = furnitures.Count();
+            int lastCount = allCount - start;
+            int count = lastCount < 15 ? lastCount : 15;
 
-            decimal helper = (decimal)furnitures.Count() / (decimal)21;
+            decimal helper = (decimal)allCount / (decimal)15;
             var pagesCount = Math.Ceiling(helper);
 
             if (count < 1)
@@ -199,6 +259,7 @@ namespace MebelMarket.Controllers
             ViewBag.usedPage = pageIdValue;
             ViewBag.usedCategory = categoryId;
             ViewBag.pagesCount = pagesCount;
+            ViewBag.allCount = allCount;
 
             return View(nameof(Grid), returnList.ToView());
         }

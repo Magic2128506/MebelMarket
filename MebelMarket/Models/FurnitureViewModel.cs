@@ -55,7 +55,7 @@ namespace MebelMarket.Models
         [Display(Name = "Венге/дуб")]
         public bool Color2 { get; set; }
 
-        [Display(Name = "Слива/крем")]
+        [Display(Name = "Венге")]
         public bool Color3 { get; set; }
 
         [Display(Name = "Дуб сонома")]

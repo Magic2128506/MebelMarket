@@ -15054,7 +15054,7 @@ Components - Tab Style
 .sort-tab-btn,
 .product-tab-btn,
 .product-details-content-tab-btn {
-  margin-top: 30px;
+  margin-top: 0px;
 }
 @media (min-width: 768px) {
   .sort-tab-btn,
@@ -16060,7 +16060,6 @@ Pages - Product Details
 .product-add-to-cart-btn a {
   display: inline-block;
   font-size: 16px;
-  margin-left: 20px;
   background: #ea1c26;
   height: 42px;
   line-height: 42px;
@@ -16082,11 +16081,17 @@ Pages - Product Details
     min-width: 270px;
   }
 }
+
+.product-add-to-cart-btn {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .product-add-to-cart-btn a:hover {
   background: #666;
 }
 
-/* Variable - Color*/
 .product-variable-color label {
   line-height: 0;
   margin-right: 5px;
@@ -16192,7 +16197,7 @@ Pages - Product Details
 }
 
 .product-details-content-tab-btn {
-  padding: 25px 0;
+  padding: 0px 0;
   font-size: 20px;
   font-weight: 600;
   border-bottom: 1px solid #ddd;
