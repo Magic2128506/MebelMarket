@@ -46,7 +46,11 @@ namespace MebelMarket.Controllers
             return View(furniture.ToView());
         }
 
-        public IActionResult Grid(int? id, [FromQuery(Name = "page")] string pageId, [FromForm(Name = "sortOrder")] string sortOrder = null)
+        public IActionResult Grid(int? id, 
+            [FromQuery(Name = "page")] string pageId, 
+            [FromForm(Name = "sortOrder")] string sortOrder = null, 
+            [FromQuery(Name = "forOffice")] string forOffice = null, 
+            [FromQuery(Name = "forHome")] string forHome = null)
         {
 
             int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
@@ -55,6 +59,16 @@ namespace MebelMarket.Controllers
             var furnitures = id <= 0 || id == null
                 ? _FurnitureData.GetLastFurnitures()
                 : _FurnitureData.GetByType(id.Value);
+
+            if (forOffice == "1")
+            {
+                furnitures = furnitures.Where(x => x.ForOffice);
+            }
+
+            if (forHome == "1")
+            {
+                furnitures = furnitures.Where(x => !x.ForOffice);
+            }
 
             int allCount = furnitures.Count();
             int start = 15 * (pageIdValue - 1);
