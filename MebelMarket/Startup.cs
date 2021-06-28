@@ -27,8 +27,11 @@ namespace MebelMarket
 
             services.AddControllersWithViews();
 
+            //services.AddDbContext<MebelMarketContext>(opt =>
+            //    opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("MebelMarket")));
+
             services.AddDbContext<MebelMarketContext>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("MebelMarket")));
+                opt.UseSqlite(@"Data Source=D:\Apps\mebelmarket\market.db", b => b.MigrationsAssembly("MebelMarket")));
 
             services.AddScoped<IFurnitureData, SQLFurnitureData>();
         }
