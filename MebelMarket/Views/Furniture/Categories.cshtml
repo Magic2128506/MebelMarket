@@ -15,123 +15,50 @@
                                 <div class="tab-content tab-animate-zoom">
                                     <div class="tab-pane active show sort-layout-single" id="layout-3-grid">
                                         <div class="row" style="text-align: center;">
-
-                                            <div class="col-xl-4 col-sm-6 col-12">
-                                                <div class="product-default-single border-around">
-                                                    <div class="product-img-warp">
-                                                        <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="1" class="product-default-img-link">
-                                                            <img src="\images\categories\1.jpg" alt="Мягкая мебель" class="product-default-img img-fluid">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-default-content">
-                                                        <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="1">Мягкая мебель</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-4 col-sm-6 col-12">
-                                                <div class="product-default-single border-around">
-                                                    <div class="product-img-warp">
-                                                        <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="2" class="product-default-img-link">
-                                                            <img src="\images\categories\2.jpg" alt="" class="product-default-img img-fluid">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-default-content">
-                                                        <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="2">Гостиная</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-4 col-sm-6 col-12">
-                                                <div class="product-default-single border-around">
-                                                    <div class="product-img-warp">
-                                                        <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="3" class="product-default-img-link">
-                                                            <img src="\images\categories\3.jpg" alt="" class="product-default-img img-fluid">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-default-content">
-                                                        <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="3">Кухня</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-4 col-sm-6 col-12">
-                                                <div class="product-default-single border-around">
-                                                    <div class="product-img-warp">
-                                                        <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="4" class="product-default-img-link">
-                                                            <img src="\images\categories\4.jpg" alt="" class="product-default-img img-fluid">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-default-content">
-                                                        <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="4">Спальня</a></h6>
+                                            @{
+                                                var categories = new[]
+                                                {
+                                                    new { ID = 1, Name = "Мягкая мебель" },
+                                                    new { ID = 2, Name = "Гостиная" },
+                                                    new { ID = 3, Name = "Кухня" },
+                                                    new { ID = 4, Name = "Спальня" },
+                                                    new { ID = 5, Name = "Шкафы" },
+                                                    new { ID = 6, Name = "Детская мебель" },
+                                                    new { ID = 7, Name = "Прихожая" },
+                                                    new { ID = 8, Name = "Офис" },
+                                                    new { ID = 9, Name = "Сад и дача" }
+                                                };
+                                                var filter = ViewBag.filter;
+                                            }
+                                            @foreach (var item in categories)
+                                            {
+                                                <div class="col-xl-4 col-sm-6 col-12">
+                                                    <div class="product-default-single border-around">
+                                                        @if (filter == null)
+                                                        {
+                                                            <div class="product-img-warp">
+                                                                <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="@item.ID" class="product-default-img-link">
+                                                                    <img src="\images\categories\1.jpg" alt="Мягкая мебель" class="product-default-img img-fluid">
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-default-content">
+                                                                <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="@item.ID">@item.Name</a></h6>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="product-img-warp">
+                                                                <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="@item.ID" asp-route-filter="@filter" class="product-default-img-link">
+                                                                    <img src="\images\categories\1.jpg" alt="Мягкая мебель" class="product-default-img img-fluid">
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-default-content">
+                                                                <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="@item.ID" asp-route-filter="@filter">@item.Name</a></h6>
+                                                            </div>
+                                                        }
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="col-xl-4 col-sm-6 col-12">
-                                                <div class="product-default-single border-around">
-                                                    <div class="product-img-warp">
-                                                        <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="5" class="product-default-img-link">
-                                                            <img src="\images\categories\5.jpg" alt="" class="product-default-img img-fluid">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-default-content">
-                                                        <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="5">Шкафы</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-4 col-sm-6 col-12">
-                                                <div class="product-default-single border-around">
-                                                    <div class="product-img-warp">
-                                                        <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="6" class="product-default-img-link">
-                                                            <img src="\images\categories\6.jpg" alt="" class="product-default-img img-fluid">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-default-content">
-                                                        <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="6">Детская мебель</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-4 col-sm-6 col-12">
-                                                <div class="product-default-single border-around">
-                                                    <div class="product-img-warp">
-                                                        <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="7" class="product-default-img-link">
-                                                            <img src="\images\categories\7.jpg" alt="" class="product-default-img img-fluid">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-default-content">
-                                                        <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="7">Прихожая</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-4 col-sm-6 col-12">
-                                                <div class="product-default-single border-around">
-                                                    <div class="product-img-warp">
-                                                        <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="8" class="product-default-img-link">
-                                                            <img src="\images\categories\8.jpg" alt="" class="product-default-img img-fluid">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-default-content">
-                                                        <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="8">Офис</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xl-4 col-sm-6 col-12">
-                                                <div class="product-default-single border-around">
-                                                    <div class="product-img-warp">
-                                                        <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="9" class="product-default-img-link">
-                                                            <img src="\images\categories\9.jpg" alt="" class="product-default-img img-fluid">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-default-content">
-                                                        <h6 class="product-default-link"><a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="9">Сад и дача</a></h6>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            }
 
                                         </div>
                                     </div>

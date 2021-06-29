@@ -23,7 +23,7 @@ namespace MebelMarket.Controllers
             _notify = notify;
         }
 
-        public IActionResult Index(int? id)
+        public IActionResult Index(int? id, [FromQuery(Name = "filter")] string filter = null)
         {
             if (id == null)
                 return View(nameof(Grid));
@@ -42,6 +42,11 @@ namespace MebelMarket.Controllers
 
             var wwwroot = _environment.WebRootPath;
             ViewBag.wwwroot = wwwroot;
+            ViewBag.filter = filter == "forOffice"
+                ? "forOffice"
+                : filter == "forHome"
+                    ? "forHome"
+                    : null;
 
             return View(furniture.ToView());
         }
@@ -49,10 +54,13 @@ namespace MebelMarket.Controllers
         public IActionResult Grid(int? id, 
             [FromQuery(Name = "page")] string pageId, 
             [FromForm(Name = "sortOrder")] string sortOrder = null, 
-            [FromQuery(Name = "forOffice")] string forOffice = null, 
-            [FromQuery(Name = "forHome")] string forHome = null)
+            [FromQuery(Name = "filter")] string filter = null)
         {
-
+            ViewBag.filter = filter == "forOffice"
+            ? "forOffice"
+            : filter == "forHome"
+                ? "forHome"
+                : null;
             int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
             int categoryId = 0;
 
@@ -60,12 +68,11 @@ namespace MebelMarket.Controllers
                 ? _FurnitureData.GetLastFurnitures()
                 : _FurnitureData.GetByType(id.Value);
 
-            if (forOffice == "1")
+            if (filter == "forOffice")
             {
                 furnitures = furnitures.Where(x => x.ForOffice);
             }
-
-            if (forHome == "1")
+            else if (filter == "forHome")
             {
                 furnitures = furnitures.Where(x => !x.ForOffice);
             }
@@ -104,21 +111,35 @@ namespace MebelMarket.Controllers
             return View(returnList.ToView());
         }
 
-        public IActionResult Search([FromQuery(Name = "Search")] string search)
+        public IActionResult Search([FromQuery(Name = "Search")] string search, [FromQuery(Name = "filter")] string filter = null)
         {
-            return FindAny(search);
+            return FindAny(search, filter);
         }
 
-        public IActionResult FindAny(string search, [FromQuery(Name = "page")] string pageId = null, [FromForm(Name = "sortOrder")] string sortOrder = null)
+        public IActionResult FindAny(string search, string filter, [FromQuery(Name = "page")] string pageId = null, [FromForm(Name = "sortOrder")] string sortOrder = null)
         {
             int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
 
             var furnitures = _FurnitureData.FindAnyByName(search);
 
+            if (filter == "forOffice")
+            {
+                furnitures = furnitures.Where(x => x.ForOffice);
+            }
+            else if (filter == "forHome")
+            {
+                furnitures = furnitures.Where(x => !x.ForOffice);
+            }
+
             int allCount = furnitures.Count();
             int start = 15 * (pageIdValue - 1);
             int lastCount = allCount - start;
             int count = lastCount < 15 ? lastCount : 15;
+            ViewBag.filter = filter == "forOffice"
+            ? "forOffice"
+            : filter == "forHome"
+                ? "forHome"
+                : null;
 
             if (count < 1)
             {
@@ -149,23 +170,50 @@ namespace MebelMarket.Controllers
 
             return View(nameof(Grid), returnList.ToView());
         }
-        public IActionResult GridByCategory(int id)
+        public IActionResult GridByCategory(int id, [FromQuery(Name = "filter")] string filter = null)
         {
             var furnitures = _FurnitureData.GetByCategory(id);
+
+            if (filter == "forOffice")
+            {
+                furnitures = furnitures.Where(x => x.ForOffice);
+            }
+            else if (filter == "forHome")
+            {
+                furnitures = furnitures.Where(x => !x.ForOffice);
+            }
+
+            ViewBag.filter = filter == "forOffice"
+                ? "forOffice"
+                : filter == "forHome"
+                    ? "forHome"
+                    : null;
 
             if (furnitures is null)
                 return View(nameof(Grid));
 
             string url = $"/Furniture/ViewPageByCategory?page=1&categoryId={id}";
+            if (filter != null)
+                url += $"&filter={filter}";
 
             return Redirect(url);
         }
 
-        public IActionResult ViewPageByCategory([FromQuery(Name = "page")] string id, [FromQuery(Name = "categoryId")] string catId, [FromForm(Name = "sortOrder")] string sortOrder = null)
+        public IActionResult ViewPageByCategory([FromQuery(Name = "page")] string id, [FromQuery(Name = "categoryId")] string catId, [FromForm(Name = "sortOrder")] string sortOrder = null, [FromQuery(Name = "filter")] string filter = null)
         {
             int pageId = id == null ? 1 : int.Parse(id);
             int categoryId = int.Parse(catId);
             var furnitures = _FurnitureData.GetByCategory(categoryId);
+
+            if (filter == "forOffice")
+            {
+                furnitures = furnitures.Where(x => x.ForOffice);
+            }
+            else if (filter == "forHome")
+            {
+                furnitures = furnitures.Where(x => !x.ForOffice);
+            }
+
             int start = 15 * (pageId - 1);
             int allCount = furnitures.Count();
             int lastCount = allCount - start;
@@ -173,6 +221,11 @@ namespace MebelMarket.Controllers
 
             decimal helper = (decimal)allCount / (decimal)15;
             var pagesCount = Math.Ceiling(helper);
+            ViewBag.filter = filter == "forOffice"
+            ? "forOffice"
+            : filter == "forHome"
+                ? "forHome"
+                : null;
 
             if (count < 1)
             {
@@ -215,67 +268,6 @@ namespace MebelMarket.Controllers
             _FurnitureData.SaveChanges();
 
             return Redirect($"Index/{model.Id}");
-        }
-
-        public IActionResult ViewForOffice([FromQuery(Name = "page")] string pageId)
-        {
-            int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
-            int categoryId = 0;
-
-            var furnitures = _FurnitureData.GetForOfficeFurnitures();
-            int allCount = furnitures.Count();
-            int start = 15 * (pageIdValue - 1);
-            int lastCount = allCount - start;
-            int count = lastCount < 15 ? lastCount : 15;
-
-            decimal helper = (decimal)allCount / (decimal)15;
-            var pagesCount = Math.Ceiling(helper);
-
-            if (count < 1)
-            {
-                return View(nameof(Grid));
-            }
-
-            var returnList = furnitures.ToList().GetRange(start, count);
-
-            ViewBag.usedFilter = "Grid";
-            ViewBag.usedPage = pageIdValue;
-            ViewBag.usedCategory = categoryId;
-            ViewBag.pagesCount = pagesCount;
-            ViewBag.allCount = allCount;
-
-            return View(nameof(Grid), returnList.ToView());
-        }
-
-        public IActionResult ViewForHome([FromQuery(Name = "page")] string pageId)
-        {
-            int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
-            int categoryId = 0;
-
-            var furnitures = _FurnitureData.GetForHomeFurnitures();
-
-            int start = 15 * (pageIdValue - 1);
-            int allCount = furnitures.Count();
-            int lastCount = allCount - start;
-            int count = lastCount < 15 ? lastCount : 15;
-
-            decimal helper = (decimal)allCount / (decimal)15;
-            var pagesCount = Math.Ceiling(helper);
-
-            if (count < 1)
-            {
-                return View(nameof(Grid));
-            }
-
-            var returnList = furnitures.ToList().GetRange(start, count);
-
-            ViewBag.usedFilter = "Grid";
-            ViewBag.usedPage = pageIdValue;
-            ViewBag.usedCategory = categoryId;
-            ViewBag.pagesCount = pagesCount;
-            ViewBag.allCount = allCount;
-
-            return View(nameof(Grid), returnList.ToView());
         }
 
         public IActionResult Edit(int? Id)
@@ -372,8 +364,14 @@ namespace MebelMarket.Controllers
             return View();
         }
 
-        public IActionResult Categories()
+        public IActionResult Categories([FromQuery(Name = "filter")] string filter = null)
         {
+            ViewBag.filter = filter == "forOffice"
+                ? "forOffice"
+                : filter == "forHome"
+                    ? "forHome"
+                    : null;
+
             return View();
         }
     }

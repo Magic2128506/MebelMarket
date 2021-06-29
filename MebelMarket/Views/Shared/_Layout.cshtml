@@ -34,7 +34,18 @@
                         <div class="header-top--right">
                             <ul class="header-user-menu">
                                 <li>
-                                    <a asp-controller="Furniture" asp-action="Categories">Мебель по категориям</a>
+                                    @if (ViewBag.filter == null)
+                                    {
+                                        <a asp-controller="Furniture" asp-action="Categories">Мебель по категориям</a>
+                                    }
+                                    else if (ViewBag.filter == "forOffice")
+                                    {
+                                        <a asp-controller="Furniture" asp-action="Categories" asp-route-filter="@ViewBag.filter">Офисная мебель по категориям</a>
+                                    }
+                                    else if (ViewBag.filter == "forHome")
+                                    {
+                                        <a asp-controller="Furniture" asp-action="Categories" asp-route-filter="@ViewBag.filter">Мебель для дома по категориям</a>
+                                    }
                                 </li>
                                 <li>
                                     <a asp-controller="Home" asp-action="Delivery">Доставка</a>
@@ -148,8 +159,8 @@
                         <li>
                             <a href="#"><span>Главная</span></a>
                             <ul class="mobile-sub-menu">
-                                <li><a asp-controller="Furniture" asp-action="ViewForHome">Мебель для дома</a></li>
-                                <li><a asp-controller="Furniture" asp-action="ViewForOffice">Офисная мебель</a></li>
+                                <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="0" asp-route-filter="forHome">Мебель для дома</a></li>
+                                <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="0" asp-route-filter="forOffice">Офисная мебель</a></li>
                             </ul>
                         </li>
                         <partial name="Partial/_CategoriesMobile" model="@catalog.GetAllTypes().ToView()" />

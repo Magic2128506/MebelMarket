@@ -22,21 +22,48 @@
                                 @{
                                     if (ViewBag.usedFilter == "Grid")
                                     {
-                                        <form asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="1" data-ajax="true" data-ajax-method="Get" data_ajax_mode="replace">
-                                            <partial name="Partial/_SortOrder" />
-                                        </form>
+                                        if (ViewBag.filter == null)
+                                        {
+                                            <form asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="1" data-ajax="true" data-ajax-method="Get" data_ajax_mode="replace">
+                                                <partial name="Partial/_SortOrder" />
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="1" asp-route-filter="@ViewBag.filter" data-ajax="true" data-ajax-method="Get" data_ajax_mode="replace">
+                                                <partial name="Partial/_SortOrder" />
+                                            </form>
+                                        }
                                     }
                                     else if (ViewBag.usedFilter == "FindAny")
                                     {
-                                        <form asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="1" asp-route-search="@ViewBag.usedFilterString" data-ajax="true" data-ajax-method="Get" data_ajax_mode="replace">
-                                            <partial name="Partial/_SortOrder" />
-                                        </form>
+                                        if (ViewBag.filter == null)
+                                        {
+                                            <form asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="1" asp-route-search="@ViewBag.usedFilterString" data-ajax="true" data-ajax-method="Get" data_ajax_mode="replace">
+                                                <partial name="Partial/_SortOrder" />
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="1" asp-route-search="@ViewBag.usedFilterString" asp-route-filter="@ViewBag.filter" data-ajax="true" data-ajax-method="Get" data_ajax_mode="replace">
+                                                <partial name="Partial/_SortOrder" />
+                                            </form>
+                                        }
                                     }
                                     else
                                     {
-                                        <form asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="1" asp-route-categoryId="@ViewBag.usedCategory" data-ajax="true" data-ajax-method="Get" data_ajax_mode="replace">
-                                            <partial name="Partial/_SortOrder" />
-                                        </form>
+                                        if (ViewBag.filter == null)
+                                        {
+                                            <form asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="1" asp-route-categoryId="@ViewBag.usedCategory" data-ajax="true" data-ajax-method="Get" data_ajax_mode="replace">
+                                                <partial name="Partial/_SortOrder" />
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form asp-controller="Furniture" asp-action="@ViewBag.usedFilter" asp-route-page="1" asp-route-categoryId="@ViewBag.usedCategory" asp-route-filter="@ViewBag.filter" data-ajax="true" data-ajax-method="Get" data_ajax_mode="replace">
+                                                <partial name="Partial/_SortOrder" />
+                                            </form>
+                                        }
                                     }
                                 }
 

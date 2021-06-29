@@ -4,14 +4,29 @@
 
 @{
     for (int i = 1; i < @catalog.GetAllCategories().Count() + 1; i++)
-    {<li class="has-dropdown" style="width: 10.4%;">
-         <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="@i" class="mega-menu-item-title">@catalog.GetAllCategories().FirstOrDefault(x => x.Id == i).Name</a>
-            <ul class="sub-menu">
-                @foreach (var product in Model.Where(x => x.Category == i))
+    {
+    <li class="has-dropdown" style="width: 10.4%;">
+        @if (ViewBag.filter == null)
+        {
+            <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="@i" class="mega-menu-item-title">@catalog.GetAllCategories().FirstOrDefault(x => x.Id == i).Name</a>
+        }
+        else
+        {
+            <a asp-controller="Furniture" asp-action="GridByCategory" asp-route-id="@i" asp-route-filter="@ViewBag.filter" class="mega-menu-item-title">@catalog.GetAllCategories().FirstOrDefault(x => x.Id == i).Name</a>
+        }
+        <ul class="sub-menu">
+            @foreach (var product in Model.Where(x => x.Category == i))
+            {
+                if (ViewBag.filter == null)
                 {
                     <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id">@product.Name</a></li>
                 }
-            </ul>
-        </li>
+                else
+                {
+                    <li><a asp-controller="Furniture" asp-action="Grid" asp-route-id="@product.Id" asp-route-filter="@ViewBag.filter">@product.Name</a></li>
+                }
+            }
+        </ul>
+    </li>
     }
 }
