@@ -26,7 +26,7 @@ namespace MebelMarket.Infrastructure.Services.Notify
                 using (var client = new MailKit.Net.Smtp.SmtpClient())
                 {
                     client.Connect("smtp.gmail.com", 465, true);
-                    client.Authenticate("magicntr@gmail.com", "Mehanik21");
+                    client.Authenticate("eiam44718@gmail.com", "Mehanik21");
                     client.Send(message);
 
                     client.Disconnect(true);

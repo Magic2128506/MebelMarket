@@ -1,28 +1,20 @@
 (function ($) {
     "use strict";
 
-    /*****************************
-    * Commons Variables
-    *****************************/
     var $window = $(window),
     $body = $('body');
     
-    /****************************
-    * Sticky Menu
-    *****************************/
     $(window).on('scroll',function() {    
         var scroll = $(window).scrollTop();
-        if (scroll < 100) {
+        var $navBar = $('.banner-and-hero-area-section');
+        var navPos = $navBar.offset().top;
+        if (scroll < navPos) {
          $(".sticky-header").removeClass("sticky");
         }else{
          $(".sticky-header").addClass("sticky");
         }
     });
 
-
-    /*****************************
-    * Off Canvas Function
-    *****************************/
     (function () {
         var $offCanvasToggle = $('.offcanvas-toggle'),
             $offCanvas = $('.offcanvas'),
@@ -48,18 +40,12 @@
             });
     })();
 
-
-    /**************************
-     * Offcanvas: Menu Content
-     **************************/
     function mobileOffCanvasMenu() {
         var $offCanvasNav = $('.offcanvas-menu'),
             $offCanvasNavSubMenu = $offCanvasNav.find('.mobile-sub-menu');
 
-        /*Add Toggle Button With Off Canvas Sub Menu*/
         $offCanvasNavSubMenu.parent().prepend('<div class="offcanvas-menu-expand"></div>');
 
-        /*Category Sub Menu Toggle*/
         $offCanvasNav.on('click', 'li a, .offcanvas-menu-expand', function (e) {
             var $this = $(this);
             if ($this.attr('href') === '#' || $this.hasClass('offcanvas-menu-expand')) {
@@ -80,10 +66,6 @@
     }
     mobileOffCanvasMenu();
 
-
-    /******************************
-     * Hero Slider - [Single Grid]
-     *****************************/
     $('.hero-area-wrapper').slick({
         arrows: false,
         fade: true,
@@ -92,9 +74,6 @@
         speed: 2000,
     });
 
-    /************************************************
-     * Product Slider - Style: Default [4 Grid, 1 Row]
-     ***********************************************/
     $('.product-default-slider-4grids-1row').slick({
         arrows: true,
         infinite: false,
