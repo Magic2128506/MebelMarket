@@ -4,6 +4,7 @@ using MebelMarket.Infrastructure.Services.Notify;
 using MebelMarket.SqlDataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,9 @@ namespace MebelMarket
             //services.AddDbContext<MebelMarketContext>(opt =>
             //    opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("MebelMarket")));
 
+            //services.AddDbContext<MebelMarketContext>(opt =>
+            //    opt.UseSqlite(@"Data Source=/tmp/market.db", b => b.MigrationsAssembly("MebelMarket")));
+
             services.AddDbContext<MebelMarketContext>(opt =>
                 opt.UseSqlite(@"Data Source=D:\Apps\mebelmarket\market.db", b => b.MigrationsAssembly("MebelMarket")));
 
@@ -39,6 +43,11 @@ namespace MebelMarket
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

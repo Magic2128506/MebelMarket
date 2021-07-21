@@ -10,7 +10,7 @@ namespace MebelMarket.SqlDataAccess
         public MebelMarketContext(DbContextOptions<MebelMarketContext> Options) : base(Options)
         {
             //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         public DbSet<Furniture> Furnitures { get; set; }
