@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using Microsoft.AspNetCore.Hosting;
 using MebelMarket.Infrastructure.Services.Notify;
+using System.Threading.Tasks;
 
 namespace MebelMarket.Controllers
 {
@@ -351,9 +352,10 @@ namespace MebelMarket.Controllers
 
             var info = order.Description.Split(';');
             var message = $"ID - {info[0]}, Название - {info[1]}, Цена без скидки - {info[2]}, Скидка - {info[3]}%";
-
-            _notify.SendEmail("timur_nasibullin@mail.ru", $"Поступил новый заказ от клиента. Имя: {order.Name}. Телефон: {order.Phone}. Товар: {message}");
-
+            message = $"Поступил новый заказ от клиента. Имя: {order.Name}. Телефон: {order.Phone}. Товар: {message}";
+            //_notify.SendEmail("timur_nasibullin@mail.ru", message);
+            var task = Task.Run(async () => { await _notify.SendMessageToTelegramAsync(message); });
+            task.Wait();
             var furniture = _FurnitureData.GetById(int.Parse(info[0]));
 
             return View($"OrderConfirm", furniture.ToView());

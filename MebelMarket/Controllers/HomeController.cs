@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace MebelMarket.Controllers
 {
@@ -70,9 +71,10 @@ namespace MebelMarket.Controllers
             if (!ModelState.IsValid)
                 return View(nameof(Contacts));
 
-            var message = $"Имя: {cvm.Name}\n\r Тема: {cvm.Theme}\n\r Email: {cvm.Email}\n\r Сообщение: {cvm.Message}";
+            var message = $"Поступил вопрос от клиента.\n\rИмя: {cvm.Name}\n\rТема: {cvm.Theme}\n\rEmail: {cvm.Email}\n\rСообщение: {cvm.Message}";
 
-            _notify.SendEmail("timur_nasibullin@mail.ru", $"Поступил новый вопрос от клиента. \n\r {message}");
+            var task = Task.Run(async () => { await _notify.SendMessageToTelegramAsync(message); });
+            task.Wait();
 
             return Redirect("/Home/Contacts?success=1");
         }
