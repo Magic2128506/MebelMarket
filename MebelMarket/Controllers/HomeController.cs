@@ -122,8 +122,8 @@ namespace MebelMarket.Controllers
         {
             if (!ModelState.IsValid)
                 return View(nameof(Contacts));
-
-            var message = $"Поступил вопрос от клиента.\n\rИмя: {cvm.Name}\n\rТема: {cvm.Theme}\n\rEmail: {cvm.Email}\n\rСообщение: {cvm.Message}";
+            string ip = HttpContext.Connection.RemoteIpAddress.ToString();
+            var message = $"Поступил вопрос от клиента.\n\rИмя: {cvm.Name}\n\rТема: {cvm.Theme}\n\rEmail: {cvm.Email}\n\rСообщение: {cvm.Message}\n\rIP: {ip}";
 
             var task = Task.Run(async () => { await _notify.SendMessageToTelegramAsync(message); });
             task.Wait();

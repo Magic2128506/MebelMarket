@@ -351,8 +351,9 @@ namespace MebelMarket.Controllers
             _FurnitureData.SaveChanges();
 
             var info = order.Description.Split(';');
+            string ip = HttpContext.Connection.RemoteIpAddress.ToString();
             var message = $"ID - {info[0]}, Название - {info[1]}, Цена без скидки - {info[2]}, Скидка - {info[3]}%";
-            message = $"Поступил новый заказ от клиента. Имя: {order.Name}. Телефон: {order.Phone}. Товар: {message}";
+            message = $"Поступил новый заказ от клиента.\n\rИмя: {order.Name}\n\rТелефон: {order.Phone}\n\rТовар: {message}\n\rIP: {ip}";
             //_notify.SendEmail("timur_nasibullin@mail.ru", message);
             var task = Task.Run(async () => { await _notify.SendMessageToTelegramAsync(message); });
             task.Wait();
