@@ -25,11 +25,7 @@ namespace MebelMarket
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<Notify>();
-
             services.AddControllersWithViews();
-
-            //services.AddDbContext<MebelMarketContext>(opt =>
-            //    opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("MebelMarket")));
 
             //services.AddDbContext<MebelMarketContext>(opt =>
             //    opt.UseSqlite(@"Data Source=/tmp/market.db", b => b.MigrationsAssembly("MebelMarket")));
@@ -54,7 +50,8 @@ namespace MebelMarket
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                //app.UseExceptionHandler("/Home/Error");
+                app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
 

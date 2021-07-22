@@ -15,28 +15,31 @@ namespace MebelMarket.Infrastructure.Services.Notify
 
         public void SendEmail(string to, string text)
         {
-            try
+
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("МебельМаркет бот", "magicntr@gmail.com"));
+            message.To.Add(new MailboxAddress(to));
+            message.Subject = "Новый заказ на сайте!";
+            message.Body = new BodyBuilder() { HtmlBody = $"<div style=\"color: green;\">{text}</div>" }.ToMessageBody();
+
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
             {
-                var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("МебельМаркет бот", "magicntr@gmail.com"));
-                message.To.Add(new MailboxAddress(to));
-                message.Subject = "Новый заказ на сайте!";
-                message.Body = new BodyBuilder() { HtmlBody = $"<div style=\"color: green;\">{text}</div>" }.ToMessageBody();
+                client.Connect("smtp.gmail.com", 465, true);
+                client.Authenticate("eiam44718@gmail.com", "Mehanik21");
+                client.Send(message);
 
-                using (var client = new MailKit.Net.Smtp.SmtpClient())
-                {
-                    client.Connect("smtp.gmail.com", 465, true);
-                    client.Authenticate("eiam44718@gmail.com", "Mehanik21");
-                    client.Send(message);
-
-                    client.Disconnect(true);
-                }
-
+                client.Disconnect(true);
             }
-            catch (Exception exp)
-            {
-                _logger.LogError(exp.GetBaseException().Message);
-            }
+
+            //try
+            //{
+
+
+            //}
+            //catch (Exception exp)
+            //{
+            //    _logger.LogError(exp.GetBaseException().Message);
+            //}
         }
     }
 }

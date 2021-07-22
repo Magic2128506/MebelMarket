@@ -93,7 +93,7 @@ namespace MebelMarket.Infrastructure.Services.InSQL
 
         public IEnumerable<Furniture> FindAnyByName(string name)
             => _db.Furnitures
-            .Where(x => x.Name.Contains(name))
+            .Where(x => x.Name.ToLower().Contains(name.ToLower()))
             .OrderByDescending(x => x.Id);
 
         public IEnumerable<Furniture> GetForOfficeFurnitures()

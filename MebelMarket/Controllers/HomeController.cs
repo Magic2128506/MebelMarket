@@ -62,7 +62,7 @@ namespace MebelMarket.Controllers
         public IActionResult FindAny(string search)
         {
             string url = $"/Furniture/Search?Search={search}";
-            return Redirect(url);
+            return RedirectPermanent(url);
         }
 
         public IActionResult SendEmail(ContactsUsViewModel cvm)
