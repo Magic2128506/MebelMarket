@@ -4,10 +4,10 @@
 @{
     ViewData["Title"] = "Админка - создание";
 }
-
+@inject IFurnitureData catalog;
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <form asp-action="Create" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -18,167 +18,177 @@
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Price" class="control-label"></label>
-                    <input asp-for="Price" class="form-control" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <br />
+                            <div class="form-group">
+                                <select asp-for="Type" asp-items="@new SelectList(catalog.GetAllTypes().Select(x => x.Name))"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label"></label>
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="DiscountValue" class="control-label"></label>
+                                <input asp-for="DiscountValue" class="form-control">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <br />
                 <div class="form-group">
                     <label asp-for="Description" class="control-label"></label>
                     <input asp-for="Description" class="form-control" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="IsNew" class="control-label"></label>
-                    <input asp-for="IsNew" class="checkbox">
-                    <span asp-validation-for="IsNew" class="text-danger"></span>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="IsNew" class="control-label"></label>
+                                <input asp-for="IsNew" class="checkbox">
+                                <span asp-validation-for="IsNew" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="IsFeatured" class="control-label"></label>
+                                <input asp-for="IsFeatured" class="checkbox">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="ForOffice" class="control-label"></label>
+                                <input asp-for="ForOffice" class="checkbox">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="IsFeatured" class="control-label"></label>
-                    <input asp-for="IsFeatured" class="checkbox">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Width" class="control-label"></label>
+                                <input asp-for="Width" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Height" class="control-label"></label>
+                                <input asp-for="Height" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Length" class="control-label"></label>
+                                <input asp-for="Length" class="form-control">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="ForOffice" class="control-label"></label>
-                    <input asp-for="ForOffice" class="checkbox">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Upholstery" class="control-label"></label>
+                                <input asp-for="Upholstery" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Filler" class="control-label"></label>
+                                <input asp-for="Filler" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="BodyMaterial" class="control-label"></label>
+                                <input asp-for="BodyMaterial" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="FacadeMaterial" class="control-label"></label>
+                                <input asp-for="FacadeMaterial" class="form-control">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Width" class="control-label"></label>
-                    <input asp-for="Width" class="form-control">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Color1" class="control-label"></label>
+                                <input asp-for="Color1" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color2" class="control-label"></label>
+                                <input asp-for="Color2" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color3" class="control-label"></label>
+                                <input asp-for="Color3" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color4" class="control-label"></label>
+                                <input asp-for="Color4" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color9" class="control-label"></label>
+                                <input asp-for="Color9" class="checkbox">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Color5" class="control-label"></label>
+                                <input asp-for="Color5" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color6" class="control-label"></label>
+                                <input asp-for="Color6" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color7" class="control-label"></label>
+                                <input asp-for="Color7" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color8" class="control-label"></label>
+                                <input asp-for="Color8" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color10" class="control-label"></label>
+                                <input asp-for="Color10" class="checkbox">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Color11" class="control-label"></label>
+                                <input asp-for="Color11" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color12" class="control-label"></label>
+                                <input asp-for="Color12" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color13" class="control-label"></label>
+                                <input asp-for="Color13" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color14" class="control-label"></label>
+                                <input asp-for="Color14" class="checkbox">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Color15" class="control-label"></label>
+                                <input asp-for="Color15" class="checkbox">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <br />
-                <div class="form-group">
-                    <label asp-for="Height" class="control-label"></label>
-                    <input asp-for="Height" class="form-control">
-                </div>
-
-                <br />
-                <div class="form-group">
-                    <label asp-for="Length" class="control-label"></label>
-                    <input asp-for="Length" class="form-control">
-                </div>
-
-                <br />
-                <div class="form-group">
-                    <label asp-for="Upholstery" class="control-label"></label>
-                    <input asp-for="Upholstery" class="form-control">
-                </div>
-
-                <br />
-                <div class="form-group">
-                    <label asp-for="Filler" class="control-label"></label>
-                    <input asp-for="Filler" class="form-control">
-                </div>
-
-                <br />
-                <div class="form-group">
-                    <label asp-for="BodyMaterial" class="control-label"></label>
-                    <input asp-for="BodyMaterial" class="form-control">
-                </div>
-
-                <br />
-                <div class="form-group">
-                    <label asp-for="FacadeMaterial" class="control-label"></label>
-                    <input asp-for="FacadeMaterial" class="form-control">
-                </div>
-
-                <br />
-                <div class="form-group">
-                    <label asp-for="DiscountValue" class="control-label"></label>
-                    <input asp-for="DiscountValue" class="form-control">
-                </div>
-
-                <br />
-                <div class="form-group">
-                    @inject IFurnitureData catalog;
-                    <label asp-for="Type">Выберите тип:</label>
-                    <select asp-for="Type" asp-items="@new SelectList(catalog.GetAllTypes().Select(x => x.Name))"></select>
-                </div>
-                <br />
-
-                <div class="form-group">
-                    <label asp-for="Color1" class="control-label"></label>
-                    <input asp-for="Color1" class="checkbox">
-                </div>
-                <br />
-
-                <div class="form-group">
-                    <label asp-for="Color2" class="control-label"></label>
-                    <input asp-for="Color2" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color3" class="control-label"></label>
-                    <input asp-for="Color3" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color4" class="control-label"></label>
-                    <input asp-for="Color4" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color5" class="control-label"></label>
-                    <input asp-for="Color5" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color6" class="control-label"></label>
-                    <input asp-for="Color6" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color7" class="control-label"></label>
-                    <input asp-for="Color7" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color8" class="control-label"></label>
-                    <input asp-for="Color8" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color9" class="control-label"></label>
-                    <input asp-for="Color9" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color10" class="control-label"></label>
-                    <input asp-for="Color10" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color11" class="control-label"></label>
-                    <input asp-for="Color11" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color12" class="control-label"></label>
-                    <input asp-for="Color12" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color13" class="control-label"></label>
-                    <input asp-for="Color13" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color14" class="control-label"></label>
-                    <input asp-for="Color14" class="checkbox">
-                </div>
-                <br />
-                <div class="form-group">
-                    <label asp-for="Color15" class="control-label"></label>
-                    <input asp-for="Color15" class="checkbox">
-                </div>
-                <br />
-
                 <div class="form-group">
                     <input type="submit" value="Создать" class="hero-button" />
                 </div>

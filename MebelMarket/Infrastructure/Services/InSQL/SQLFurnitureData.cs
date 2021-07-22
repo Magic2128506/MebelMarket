@@ -37,6 +37,24 @@ namespace MebelMarket.Infrastructure.Services.InSQL
             model.IsNew = newModel.IsNew;
             model.IsFeatured = newModel.IsFeatured;
             model.ForOffice = newModel.ForOffice;
+            model.Width = newModel.Width;
+            model.Length = newModel.Length;
+            model.Height = newModel.Height;
+            model.Color1 = newModel.Color1;
+            model.Color2 = newModel.Color2;
+            model.Color3 = newModel.Color3;
+            model.Color4 = newModel.Color4;
+            model.Color5 = newModel.Color5;
+            model.Color6 = newModel.Color6;
+            model.Color7 = newModel.Color7;
+            model.Color8 = newModel.Color8;
+            model.Color9 = newModel.Color9;
+            model.Color10 = newModel.Color10;
+            model.Color11 = newModel.Color11;
+            model.Color12 = newModel.Color12;
+            model.Color13 = newModel.Color13;
+            model.Color14 = newModel.Color14;
+            model.Color15 = newModel.Color15;
 
             if (newModel.TypeId != null)
             {
