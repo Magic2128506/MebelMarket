@@ -112,11 +112,6 @@ namespace MebelMarket.Controllers
             return View(returnList.ToView());
         }
 
-        public IActionResult Search([FromQuery(Name = "Search")] string search, [FromQuery(Name = "filter")] string filter = null)
-        {
-            return FindAny(search, filter);
-        }
-
         public IActionResult FindAny(string search, string filter, [FromQuery(Name = "page")] string pageId = null, [FromForm(Name = "sortOrder")] string sortOrder = null)
         {
             int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
