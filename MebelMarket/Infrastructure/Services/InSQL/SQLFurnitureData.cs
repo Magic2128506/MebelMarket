@@ -44,6 +44,7 @@ namespace MebelMarket.Infrastructure.Services.InSQL
             model.Filler = newModel.Filler;
             model.FacadeMaterial = newModel.FacadeMaterial;
             model.Upholstery = newModel.Upholstery;
+            model.BodyMaterial = newModel.BodyMaterial;
             model.Color1 = newModel.Color1;
             model.Color2 = newModel.Color2;
             model.Color3 = newModel.Color3;
