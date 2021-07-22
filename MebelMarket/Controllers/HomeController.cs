@@ -1,10 +1,13 @@
 ﻿using MebelMarket.Infrastructure.Interfaces;
+using MebelMarket.Infrastructure.Mapping;
 using MebelMarket.Infrastructure.Services.Notify;
 using MebelMarket.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MebelMarket.Controllers
@@ -60,10 +63,59 @@ namespace MebelMarket.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult FindAny(string search)
+        public IActionResult FindAny(string search, string filter, [FromQuery(Name = "page")] string pageId = null, [FromForm(Name = "sortOrder")] string sortOrder = null)
         {
-            string url = $"/Furniture/Search?Search={search}";
-            return RedirectPermanent(url);
+            int pageIdValue = pageId == null ? 1 : int.Parse(pageId);
+
+            var furnitures = _FurnitureData.FindAnyByName(search);
+
+            if (filter == "forOffice")
+            {
+                furnitures = furnitures.Where(x => x.ForOffice);
+            }
+            else if (filter == "forHome")
+            {
+                furnitures = furnitures.Where(x => !x.ForOffice);
+            }
+
+            int allCount = furnitures.Count();
+            int start = 15 * (pageIdValue - 1);
+            int lastCount = allCount - start;
+            int count = lastCount < 15 ? lastCount : 15;
+            ViewBag.filter = filter == "forOffice"
+            ? "forOffice"
+            : filter == "forHome"
+                ? "forHome"
+                : null;
+
+            if (count < 1)
+            {
+                return RedirectToAction("Grid", "Furniture");
+            }
+
+            if (sortOrder == "byPrice")
+            {
+                furnitures = furnitures.OrderBy(x => x.Price);
+            }
+            else if (sortOrder == "byPriceDesc")
+            {
+                furnitures = furnitures.OrderByDescending(x => x.Price);
+            }
+
+            decimal helper = (decimal)allCount / (decimal)15;
+            var pagesCount = Math.Ceiling(helper);
+
+            var returnList = furnitures.ToList().GetRange(start, count);
+
+            ViewBag.usedFilter = "FindAny";
+            ViewBag.usedFilterString = search;
+            ViewBag.usedPage = pageIdValue;
+            ViewBag.usedCategory = 0;
+            ViewBag.pagesCount = pagesCount;
+            ViewBag.allCount = allCount;
+            ViewBag.SordOrder = sortOrder;
+
+            return RedirectToAction("Grid", "Furniture", returnList.ToView());
         }
 
         public IActionResult SendEmail(ContactsUsViewModel cvm)
