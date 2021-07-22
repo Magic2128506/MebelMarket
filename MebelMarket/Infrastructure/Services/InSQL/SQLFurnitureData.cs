@@ -1,6 +1,7 @@
 ﻿using MebelMarket.Domain;
 using MebelMarket.Infrastructure.Interfaces;
 using MebelMarket.SqlDataAccess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -116,7 +117,7 @@ namespace MebelMarket.Infrastructure.Services.InSQL
 
         public IEnumerable<Furniture> FindAnyByName(string name)
             => _db.Furnitures
-            .Where(x => x.Name.ToLower().Contains(name.ToLower()))
+            .Where(x => EF.Functions.Like(x.Name, $"%{name}%"))
             .OrderByDescending(x => x.Id);
 
         public IEnumerable<Furniture> GetForOfficeFurnitures()
