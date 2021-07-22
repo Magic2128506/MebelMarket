@@ -190,9 +190,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Изменить" class="hero-button" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="submit" value="Изменить" class="hero-button" />
+                        </div>
+                        <div class="col-md-6">
+                            <a asp-controller="Furniture" asp-action="Index" asp-route-id="@Model.Id" class="hero-button">Открыть страницу товара</a>
+                        </div>
+                    </div>
                 </div>
             </form>
+
         </div>
     </div>
 </div>

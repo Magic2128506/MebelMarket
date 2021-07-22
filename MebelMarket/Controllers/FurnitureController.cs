@@ -295,8 +295,6 @@ namespace MebelMarket.Controllers
 
             var model = furnitureViewModel.FromView();
 
-
-
             var id = furnitureViewModel.Id;
             if (id == 0)
                 _FurnitureData.Add(model);

@@ -34,12 +34,16 @@ namespace MebelMarket.Infrastructure.Services.InSQL
             model.Name = newModel.Name;
             model.Description = newModel.Description;
             model.Price = newModel.Price;
+            model.DiscountValue = newModel.DiscountValue;
             model.IsNew = newModel.IsNew;
             model.IsFeatured = newModel.IsFeatured;
             model.ForOffice = newModel.ForOffice;
             model.Width = newModel.Width;
             model.Length = newModel.Length;
             model.Height = newModel.Height;
+            model.Filler = newModel.Filler;
+            model.FacadeMaterial = newModel.FacadeMaterial;
+            model.Upholstery = newModel.Upholstery;
             model.Color1 = newModel.Color1;
             model.Color2 = newModel.Color2;
             model.Color3 = newModel.Color3;
