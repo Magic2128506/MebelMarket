@@ -13783,6 +13783,7 @@ Components - Hero
   position: relative;
   z-index: 1;
   font-size: 14px;
+  border-radius: 5px;
 }
 @media (min-width: 576px) {
   .hero-button {
@@ -13804,7 +13805,8 @@ Components - Hero
   right: 0;
   transition: all 0.3s ease 0s;
   z-index: -1;
-  background: #000;
+  background: #333;
+  border-radius: 5px;
 }
 
 .hero-button:hover::after {
