@@ -117,7 +117,9 @@ namespace MebelMarket.Infrastructure.Services.InSQL
 
         public IEnumerable<Furniture> FindAnyByName(string name)
             => _db.Furnitures
-            .Where(x => EF.Functions.Like(x.Name, $"%{name}%"))
+            .Where(x => EF.Functions.Like(x.Name, $"%{name}%") ||
+            !string.IsNullOrEmpty(name) &&
+            EF.Functions.Like(x.Name, $"%{name.First().ToString().ToUpper()}{name.Substring(1)}%"))
             .OrderByDescending(x => x.Id);
 
         public IEnumerable<Furniture> GetForOfficeFurnitures()
