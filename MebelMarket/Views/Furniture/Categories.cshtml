@@ -32,13 +32,14 @@
                                             }
                                             @foreach (var item in categories)
                                             {
+                                                string imgSrc = $"\\images\\categories\\{item.ID}.jpg";
                                                 <div class="col-xl-4 col-sm-6 col-12">
                                                     <div class="product-default-single border-around">
                                                         @if (filter == null)
                                                         {
                                                             <div class="product-img-warp">
                                                                 <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="@item.ID" class="product-default-img-link">
-                                                                    <img src="\images\categories\1.jpg" alt="Мягкая мебель" class="product-default-img img-fluid">
+                                                                    <img src="@imgSrc" alt="Мягкая мебель" class="product-default-img img-fluid">
                                                                 </a>
                                                             </div>
                                                             <div class="product-default-content">
@@ -49,7 +50,7 @@
                                                         {
                                                             <div class="product-img-warp">
                                                                 <a asp-controller="Furniture" asp-action="ViewPageByCategory" asp-route-categoryId="@item.ID" asp-route-filter="@filter" class="product-default-img-link">
-                                                                    <img src="\images\categories\1.jpg" alt="Мягкая мебель" class="product-default-img img-fluid">
+                                                                    <img src="@imgSrc" alt="Мягкая мебель" class="product-default-img img-fluid">
                                                                 </a>
                                                             </div>
                                                             <div class="product-default-content">
